@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fantasy_Biking.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,6 +14,13 @@ namespace Fantasy_Biking
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private async void LeagueListing_Clicked(object sender, EventArgs e)
+        {
+            var leagues = await APIRequestlogic.GetListOfLeagues();
+            
+            await Navigation.PushAsync(new View.TestLeaguePage(leagues));
         }
     }
 }

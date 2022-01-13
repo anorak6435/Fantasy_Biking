@@ -20,6 +20,7 @@
             </Label.FormattedText>
         </Label>
         <Button x:Name="leagueListing" Text="League List" Clicked="LeagueListing_Clicked"/>
+        <Button x:Name="TeamListing" Text="Team List" Clicked="TeamListing_Clicked"/>
     </StackLayout>
 
 </ContentPage>

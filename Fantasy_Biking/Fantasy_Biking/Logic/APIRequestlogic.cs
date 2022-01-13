@@ -28,5 +28,24 @@ namespace Fantasy_Biking.Logic
 
             return leagues;
         }
+
+        public async static Task<List<Team>> GetListOfTeams()
+        {
+            List<Team> teams = new List<Team>();
+
+            var url = Team.GenerateURLListTeams();
+
+            using (HttpClient client = new HttpClient())
+            {
+                var response = await client.GetAsync(url);
+                var json = await response.Content.ReadAsStringAsync();
+
+                var teamListResponse = JsonConvert.DeserializeObject<TeamResponse>(json);
+
+                teams = teamListResponse.teams as List<Team>;
+            }
+
+            return teams;
+        }
     }
 }

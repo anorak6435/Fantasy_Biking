@@ -22,5 +22,12 @@ namespace Fantasy_Biking
             
             await Navigation.PushAsync(new View.TestLeaguePage(leagues));
         }
+
+        private async void TeamListing_Clicked(object sender, EventArgs e)
+        {
+            var teams = await APIRequestlogic.GetListOfTeams();
+
+            await Navigation.PushAsync(new View.TestTeamPage(teams));
+        }
     }
 }

@@ -3,6 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fantasy_Biking.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Color x:Key="Primary">#A9E060</Color>
+            <Color x:Key="ButtonPrimary">#EDE25A</Color>
+            <Color x:Key="ButtonText">Black</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+                <Setter Property="BarTextColor" Value="{StaticResource ButtonText}"/>
+                <Setter Property="BarBackgroundColor" Value="{StaticResource ButtonPrimary}"/>
+                <Setter Property="BarBackground" Value="{StaticResource ButtonPrimary}"/>
+                <Setter Property="TabIndex" Value="{StaticResource ButtonPrimary}"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ButtonPrimary}"/>
+                <Setter Property="TextColor" Value="{StaticResource ButtonText}"/>
+            </Style>
+            <Style TargetType="FlyoutPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+            </Style>
+            <Style TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+            </Style>
+            <Style TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+            </Style>
+            <Style TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

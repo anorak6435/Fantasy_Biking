@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="launcher_background">#FFFFFF</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+  <color name="launcher_background">#A9E060</color>
+  <color name="colorPrimary">#A9E060</color>
+  <color name="colorPrimaryDark">#A9E060</color>
+  <color name="colorAccent">@android:color/black</color>
+  <color name="color_action_bar">#3450A3</color>
 </resources>

@@ -84,7 +84,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable\Fantasy_Biking_Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Fantasy_Biking\Fantasy_Biking.csproj">

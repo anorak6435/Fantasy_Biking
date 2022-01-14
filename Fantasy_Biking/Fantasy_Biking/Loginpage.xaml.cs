@@ -16,5 +16,3 @@ namespace Fantasy_Biking
         {
             InitializeComponent();
         }
-    }
-}

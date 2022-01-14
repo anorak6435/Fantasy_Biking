@@ -11,7 +11,7 @@ namespace Fantasy_Biking
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new Loginpage());
         }
 
         public App(string databaseLocation)

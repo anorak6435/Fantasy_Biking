@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Skol.LoginPage"
+             Visual="Material"
+             Title="Login"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout>
+        <StackLayout x:Name="SkolLogoLogin" VerticalOptions="FillAndExpand">
+            <Image x:Name="SkolLogo" Source="skollogo.png" Margin="0,80,0,0"/>
+        </StackLayout>
+        <StackLayout x:Name="LoginEntries" VerticalOptions="StartAndExpand">
+            <StackLayout.Padding>
+                <OnIdiom x:TypeArguments="Thickness">
+                    <OnIdiom.Phone>40,0,40,0</OnIdiom.Phone>
+                    <OnIdiom.Tablet>140,150,140,0</OnIdiom.Tablet>
+                </OnIdiom>
+            </StackLayout.Padding>
+            <Entry x:Name="Entry_Username"
+                   Placeholder="Username" />
+            <Entry x:Name="Entry_Password"
+                   Placeholder="Password"
+                   IsPassword="True" />
+            <Button Text="Login"
+                    Clicked="CheckInformation"/>
+            <Label Text="Forgot Password"
+                   HorizontalOptions="Center"
+                   TextColor="#393939"
+                   TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Reset_Password"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="Register"
+                   HorizontalOptions="Center"
+                   TextColor="#393939"
+                   TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Register_Account"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

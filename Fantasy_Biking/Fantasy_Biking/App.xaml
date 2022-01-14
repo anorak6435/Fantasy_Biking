@@ -5,7 +5,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#A9E060</Color>
-            <Color x:Key="ButtonPrimary">#EDE25A</Color>
+            <Color x:Key="ButtonPrimary">#7FF75E</Color>
             <Color x:Key="ButtonText">Black</Color>
             <Style TargetType="NavigationPage">
                 <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>

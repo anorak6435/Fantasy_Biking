@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fantasy_Biking.MainPageFlyout"
+             Title="Flyout">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                Text="Navigation"
+                VerticalOptions="Center" HorizontalOptions="Center" Padding="0,30,0,30" FontSize="Title"/>
+            <Button
+                Text="Races"/>
+            <Button
+                Text="Cyclists"/>
+            <Button
+                Text="Leaderboard"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

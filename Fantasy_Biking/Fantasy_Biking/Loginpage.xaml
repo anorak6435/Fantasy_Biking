@@ -7,7 +7,7 @@
              NavigationPage.HasNavigationBar="False">
     <StackLayout>
         <StackLayout x:Name="Fantasy_Biking_Login" VerticalOptions="FillAndExpand">
-            <Image x:Name="Fantasy_Biking_Logo" Source="skollogo.png" Margin="0,80,0,0"/>
+            <Image x:Name="Fantasy_Biking_Logo" Source="Fantasy_Biking_Logo.png" Margin="0,80,0,0"/>
         </StackLayout>
         <StackLayout x:Name="LoginEntries" VerticalOptions="StartAndExpand">
             <StackLayout.Padding>

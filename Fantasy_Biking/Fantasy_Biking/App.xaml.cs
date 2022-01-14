@@ -18,7 +18,7 @@ namespace Fantasy_Biking
         {
             InitializeComponent();
             DatabaseLocation = databaseLocation;
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new Loginpage());
         }
 
         protected override void OnStart()

@@ -6,11 +6,11 @@
         <StackLayout>
             <Label
                 x:Name="Points_Title"
-                Padding="0,030,0,0"
+                Padding="0,30,0,0"
                 Text="Points Total"
-                VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand"
-                FontSize="Header"
+                FontSize="Title"
+                HorizontalTextAlignment="Center"
                 FontAttributes="Bold"
                 TextColor="Black"/>
             <Label
@@ -20,7 +20,6 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
-                FontAttributes="Bold"
                 FontSize="Title"
                 TextColor="Black"/>
             <Label

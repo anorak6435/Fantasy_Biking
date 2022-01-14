@@ -5,38 +5,46 @@
     <ContentPage.Content>
         <StackLayout>
             <Label
-                Padding="0,30,0,0"
+                x:Name="Points_Title"
+                Padding="0,030,0,0"
                 Text="Points Total"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                FontSize="Title"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                FontSize="Header"
                 FontAttributes="Bold"
                 TextColor="Black"/>
             <Label
-                Padding="0,30,0,0"
+                x:Name="Points"
+                Padding="40,0,40,25"
+                Text="10023"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"
+                FontSize="Title"
+                TextColor="Black"/>
+            <Label
+                x:Name="MyTeam_Title"
+                Padding="0,0,0,0"
                 Text="My Team"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 FontSize="Title"
                 FontAttributes="Bold"
                 TextColor="Black"/>
-            <StackLayout Padding="25,25,25,0">
-                <Frame HeightRequest="170"
-                       Padding="10,10,10,10"
-                       CornerRadius="40"
-                       BackgroundColor="AliceBlue">
-                    <ListView
+            <StackLayout Padding="25,0,25,25" HeightRequest="150">
+                <ListView
+                    x:Name="MyTeam_List"
                         BackgroundColor="AliceBlue">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextCell Text="lol"
-                                          TextColor="Black"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Frame>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
             <Label
+                x:Name="NextRace_Title"
                 Padding="0,0,0,0"
                 Text="Next race name"
                 VerticalOptions="Center" 
@@ -44,8 +52,25 @@
                 FontSize="Title"
                 FontAttributes="Bold"
                 TextColor="Black"/>
-            <Image HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="100" WidthRequest="200" x:Name="Placeholder"
+            <Image x:Name="NextRace_Statistics" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="100"
                    Source="Placeholder.png"/>
+            <Label
+                x:Name="NextRace_Info_Title"
+                Padding="0,0,0,0"
+                Text="Race Info"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                TextColor="Black"/>
+            <Label
+                x:Name="NextRace_Info"
+                Padding="40,0,40,0"
+                Text="Lorem Ipsum Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                TextColor="Black"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

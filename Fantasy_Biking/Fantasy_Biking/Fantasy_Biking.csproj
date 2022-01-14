@@ -17,8 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="Logic\" />
     <Folder Include="View\" />
   </ItemGroup>
 

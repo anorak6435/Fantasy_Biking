@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fantasy_Biking.Logic;
+using Fantasy_Biking.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,7 +50,18 @@ namespace Fantasy_Biking
         }
         async private void CheckInformation(object sender, EventArgs e)
         {
-            bool IsusernameEmpty = string.IsNullOrEmpty(Entry_Username.Text);
+            (User usr, string msgErr) = UserLogic.Login(Entry_Username.Text, Entry_Password.Text);
+
+            if (usr == null)
+            {
+                await DisplayAlert("Waarschuwing!", msgErr, "cancel");
+            } else
+            {
+                // We found a user
+                await Navigation.PushAsync(new MainPage());
+            }
+
+            /*bool IsusernameEmpty = string.IsNullOrEmpty(Entry_Username.Text);
             bool IsuserPasswordEmpty = string.IsNullOrEmpty(Entry_Password.Text);
 
 
@@ -59,7 +72,7 @@ namespace Fantasy_Biking
             else
             {
                 await Navigation.PushAsync(new MainPage());
-            }
+            }*/
         }
     }
 }

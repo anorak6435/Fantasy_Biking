@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fantasy_Biking.View.TestLoginPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="LoginPage"
+                HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="msgLbl"/>
+            <Entry x:Name="userNameEntry" Placeholder="Gebruikersnaam"/>
+            <Entry x:Name="passwordEntry" Placeholder="Wachtwoord"/>
+            <Button x:Name="registerBtn" Text="Register" Clicked="registerBtn_Clicked"/>
+            <Button x:Name="loginBtn" Text="Login" Clicked="loginBtn_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

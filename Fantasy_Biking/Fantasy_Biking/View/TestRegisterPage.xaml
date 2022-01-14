@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fantasy_Biking.View.TestRegisterPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                HorizontalOptions="CenterAndExpand" />
+            <Label x:Name="msgLbl"/>
+            <Entry x:Name="userNameEntry" Placeholder="Gebruikersnaam"/>
+            <Entry x:Name="PasswordEntry" Placeholder="Wachtwoord"/>
+            <Entry x:Name="PasswordRepeatEntry" Placeholder="Opniew Wachtwoord"/>
+            <Button x:Name="RegisterBtn" Text="Register" Clicked="RegisterBtn_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

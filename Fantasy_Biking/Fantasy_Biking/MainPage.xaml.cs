@@ -14,5 +14,10 @@ namespace Fantasy_Biking
         {
             InitializeComponent();
         }
+
+        private void LoginPage_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new View.TestLoginPage());
+        }
     }
 }

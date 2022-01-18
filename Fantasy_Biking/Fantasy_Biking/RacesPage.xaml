@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fantasy_Biking.RacesPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="25,25,25,25" HeightRequest="150">
+                <ListView HeightRequest="100" 
+                    x:Name="Race_List"
+                        BackgroundColor="AliceBlue">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Label
+                x:Name="Races_List"
+                Padding="0,0,0,0"
+                Text="Selected Race"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontSize="Title"
+                FontAttributes="Bold"
+                TextColor="Black"/>
+            <Label
+                x:Name="NextRace_Info"
+                Padding="40,0,40,0"
+                Text="Lorem Ipsum Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,
+                adipisci velit,Lorem Ipsum Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,
+                adipisci velit,Lorem Ipsum Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                TextColor="Black"/>
+            <Image
+                x:Name="Race Statistics"
+                Source="Placeholder.png"
+                WidthRequest="300"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

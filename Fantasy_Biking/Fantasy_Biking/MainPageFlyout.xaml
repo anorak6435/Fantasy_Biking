@@ -9,11 +9,11 @@
                 Text="Navigation"
                 VerticalOptions="Center" HorizontalOptions="Center" Padding="0,30,0,30" FontSize="Title"/>
             <Button
-                Text="Races"/>
+                 x:Name="Races" Text="Races" Clicked="Races_Clicked"/>
             <Button
-                Text="Cyclists"/>
+                 x:Name="Cyclists" Text="Cyclists" Clicked="Cyclists_Clicked"/>
             <Button
-                Text="Leaderboard"/>
+                x:Name="Leaderboard" Text="Leaderboard" Clicked="Leaderboard_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

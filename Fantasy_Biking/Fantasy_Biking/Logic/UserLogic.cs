@@ -23,7 +23,10 @@ namespace Fantasy_Biking.Logic
                 usrs = con.Table<User>().Where(x => x.Name == userName && x.Password == password).ToList();
             }
             // check that there is one person that meets password and userName
-            if (usrs.Count != 1)
+            if (usrs.Count < 1)
+            {
+                return (null, "Geen gebruiker gevonden!");
+            } else if (usrs.Count > 1)
             {
                 return (null, "Fout in de database!");
             }
@@ -52,6 +55,12 @@ namespace Fantasy_Biking.Logic
             using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
             {
                 con.CreateTable<User>();
+                // check if the users exists inside the database
+                List<User> users = con.Table<User>().Where(x => x.Name == userName).ToList();
+                if (users.Count > 0)
+                {
+                    return (false, "Gebruiker bestaat al!");
+                }
                 ins_rows = con.Insert(usr);
             }
             if (ins_rows != 1)

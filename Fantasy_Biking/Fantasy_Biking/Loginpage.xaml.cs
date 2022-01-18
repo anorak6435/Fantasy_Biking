@@ -30,7 +30,7 @@ namespace Fantasy_Biking
         {
 
             {
-                await Navigation.PushAsync(new MainPage());
+                await Navigation.PushAsync(new RegisterPage());
             }
         }
         async private void Reset_Password(object sender, EventArgs e)

@@ -93,5 +93,11 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Placeholder.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fantasy_Biking\Fantasy_Biking.csproj">
+      <Project>{32b143f2-e761-4b89-8c49-14b2d25713cb}</Project>
+      <Name>Fantasy_Biking</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -35,7 +35,7 @@
                 HorizontalTextAlignment="Center"
                 TextColor="Black"/>
             <Image
-                x:Name="Race_Statistics"
+                x:Name="RaceStatistics"
                 Source="Placeholder.png"
                 WidthRequest="300"/>
 

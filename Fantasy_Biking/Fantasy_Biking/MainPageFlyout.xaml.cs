@@ -19,17 +19,29 @@ namespace Fantasy_Biking
 
         private async void Races_Clicked(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             await Navigation.PushAsync(new LeaderboardPage());
+=======
+            await Navigation.PushAsync(new CyclistsPage());
+>>>>>>> CyclistPage
         }
 
         private async void Cyclists_Clicked(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             await Navigation.PushAsync(new LeaderboardPage());
+=======
+            await Navigation.PushAsync(new CyclistsPage());
+>>>>>>> CyclistPage
         }
 
         private async void Leaderboard_Clicked(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             await Navigation.PushAsync(new LeaderboardPage());
+=======
+            await Navigation.PushAsync(new CyclistsPage());
+>>>>>>> CyclistPage
         }
     }
 }

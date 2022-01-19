@@ -76,7 +76,7 @@
                 <Image
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
-                x:Name="RaceStatistics"
+                x:Name="Race_Statistics"
                 Source="Placeholder.png"
                 WidthRequest="300"/>
                 <Label

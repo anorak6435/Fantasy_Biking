@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Fantasy_Biking.LeaderboardPage">
+             x:Class="Fantasy_Biking.LeaderboardPage"
+             Title="Leaderboard">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
                 <Label
                 x:Name="Current_Team"
                 Padding="0,25,0,0"
-                Text="Current Team"
+                Text="Today"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 FontSize="Title"
@@ -24,63 +25,10 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-
                 </StackLayout>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="2*" />
-                        <RowDefinition Height="50" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Label
-                    Text="Points total"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    TextColor="Black"
-                    FontSize="Title"
-                    FontAttributes="Bold"/>
-                    <Label
-                    Grid.Column="1"
-                    Text="Points left"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    TextColor="Black"
-                    FontSize="Title"
-                    FontAttributes="Bold"/>
-                    <Label
-                    Grid.Row="1"
-                    Text="100120"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    TextColor="Black"
-                    FontSize="Title"/>
-                    <Label
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Text="934"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    TextColor="Black"
-                    FontSize="Title"/>
-                </Grid>
+
                 <Label
-                Text="Next Race"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                TextColor="Black"
-                FontSize="Title"
-                FontAttributes="Bold"/>
-                <Image
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                x:Name="Race_Statistics"
-                Source="Placeholder.png"
-                WidthRequest="300"/>
-                <Label
-                Text="Swap Cyclists"
+                Text="Overall Leader "
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 TextColor="Black"

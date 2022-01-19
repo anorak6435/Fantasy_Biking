@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Fantasy_Biking
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPageFlyout : ContentPage
+    public partial class RacesPage : ContentPage
     {
-        public MainPageFlyout()
+        public RacesPage()
         {
             InitializeComponent();
         }

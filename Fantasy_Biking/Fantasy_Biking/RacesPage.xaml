@@ -11,7 +11,7 @@
                         BackgroundColor="AliceBlue">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell/>
+                            <TextCell Text="{Binding strLeague}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

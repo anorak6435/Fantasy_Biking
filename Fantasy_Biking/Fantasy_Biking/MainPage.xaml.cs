@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fantasy_Biking.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,9 +11,11 @@ namespace Fantasy_Biking
 {
     public partial class MainPage : FlyoutPage
     {
-        public MainPage()
+        public User loggedInUser;
+        public MainPage(User usr)
         {
             InitializeComponent();
+            loggedInUser = usr;
         }
     }
 }

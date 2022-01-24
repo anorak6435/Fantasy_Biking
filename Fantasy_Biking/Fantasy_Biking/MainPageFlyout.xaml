@@ -15,7 +15,7 @@
             <Button
                 x:Name="Leaderboard" Text="Leaderboard" Clicked="Leaderboard_Clicked"/>
             <Button
-                x:Name="Notes" Text="Notes" Clicked="Notes_Clicked"/>
+                x:Name="Notes" Text="Notes" Clicked="Notes_Clicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

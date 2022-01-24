@@ -1,12 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Fantasy_Biking.NotitiePage">
+             x:Class="Fantasy_Biking.NotitiePage"
+             Title="Notes">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="My Notes" FontSize="Title" HorizontalOptions="Center" Padding="0,10,0,10" TextColor="Black"/>
+            <StackLayout Padding="25,0,25,25" HeightRequest="200">
+                <ListView
+                    x:Name="My_Noteslist"
+                        BackgroundColor="AliceBlue">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Notitie}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Button x:Name="Add_Note" Text="Add Note" Clicked="Add_Note_Clicked" Margin="50,0,50,0"/>
+            <Button x:Name="Delete_Note" Text="Delete Note" Clicked="Delete_Note_Clicked" Margin="50,0,50,0"/>
+            <Frame Margin="25,25,25,0">
+                <Editor x:Name="NewNotes" TextColor="Black" AutoSize="TextChanges"/>
+            </Frame>
+            <Frame Margin="25,25,25,0">
+                <Label BindingContext=""/>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

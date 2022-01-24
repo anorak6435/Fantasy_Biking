@@ -16,5 +16,10 @@ namespace Fantasy_Biking
         {
             InitializeComponent();
         }
+
+        private void Add_Note_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

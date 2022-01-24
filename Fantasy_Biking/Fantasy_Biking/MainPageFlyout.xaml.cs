@@ -31,5 +31,10 @@ namespace Fantasy_Biking
         {
             await Navigation.PushAsync(new LeaderboardPage());
         }
+
+        private async void Notes_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NotitiePage());
+        }
     }
 }

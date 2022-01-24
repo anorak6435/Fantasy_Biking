@@ -27,7 +27,12 @@ namespace Fantasy_Biking
 
         private void Add_to_team_Clicked(object sender, EventArgs e)
         {
-
+            if (Swap_Cyclists.SelectedItem == null)
+            {
+               DisplayAlert("Canceling!", "please select a cyclist to add!", "cancel");
+            }
+            // there is an item selected
+            TeamLogic.AddPlayerToTeam(Swap_Cyclists.SelectedItem as Biker);
         }
     }
 }

@@ -102,7 +102,7 @@
                     x:Name="Add_to_team"
                     Text="Add Player to Team"
                     Margin="25,0,25,25"
-                    IsVisible="False"
+                    IsVisible="True"
                     Clicked="Add_to_team_Clicked"/>
             </StackLayout>
         </ScrollView>

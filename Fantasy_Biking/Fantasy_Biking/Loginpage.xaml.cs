@@ -35,7 +35,7 @@ namespace Fantasy_Biking
         }
         async private void Reset_Password(object sender, EventArgs e)
         {
-            bool IsusernameEmpty = string.IsNullOrEmpty(Entry_Username.Text);
+            /*bool IsusernameEmpty = string.IsNullOrEmpty(Entry_Username.Text);
             bool IsuserPasswordEmpty = string.IsNullOrEmpty(Entry_Password.Text);
 
 
@@ -46,7 +46,7 @@ namespace Fantasy_Biking
             else
             {
                 await Navigation.PushAsync(new MainPage());
-            }
+            }*/
         }
         async private void CheckInformation(object sender, EventArgs e)
         {
@@ -58,7 +58,7 @@ namespace Fantasy_Biking
             } else
             {
                 // We found a user
-                await Navigation.PushAsync(new MainPage());
+                await Navigation.PushAsync(new MainPage(usr));
             }
 
             /*bool IsusernameEmpty = string.IsNullOrEmpty(Entry_Username.Text);

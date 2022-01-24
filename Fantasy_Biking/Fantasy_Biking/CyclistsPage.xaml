@@ -87,18 +87,24 @@
                 TextColor="Black"
                 FontSize="Title"
                 FontAttributes="Bold"/>
-            <StackLayout Padding="25,0,25,25" HeightRequest="200">
-                <ListView HeightRequest="100" 
+                <StackLayout Padding="25,0,25,25" HeightRequest="200">
+                    <ListView HeightRequest="100" 
                     x:Name="Swap_Cyclists"
                         BackgroundColor="AliceBlue">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <Button
+                    x:Name="Add_to_team"
+                    Text="Add Player to Team"
+                    Margin="25,0,25,25"
+                    IsVisible="False"
+                    Clicked="Add_to_team_Clicked"/>
             </StackLayout>
-        </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

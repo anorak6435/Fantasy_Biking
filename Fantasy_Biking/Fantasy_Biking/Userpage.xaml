@@ -5,10 +5,10 @@
     <ContentPage.Content>
         <StackLayout>
             <Image x:Name="UserPic"
-                   Source=""
+                   HeightRequest="100"
                    VerticalOptions="Center"
-                   HorizontalOptions="Center"
-                   Margin="0,100,0,0"/>
+                   HorizontalOptions="Center"/>
+            <Button x:Name="ChangeProfileImage" Text="Edit image" Margin="50, 50, 50, 0" Clicked="ChangeProfileImage_Clicked"/>
             <StackLayout Padding="50,50,50,0">
                 <Label Text="Username"
                        HorizontalOptions="CenterAndExpand"
@@ -16,7 +16,6 @@
                        FontSize="Title"
                        FontAttributes="Bold"/>
                 <Label x:Name="UsernameLabel"
-                       Text="{Binding Name}"
                        HorizontalOptions="CenterAndExpand"
                        TextColor="Black"
                        FontSize="Title"/>
@@ -47,7 +46,6 @@
                        FontSize="Title"
                        FontAttributes="Bold"/>
                 <Label x:Name="PasswordLabel"
-                       Text="{Binding Password}"
                        HorizontalOptions="CenterAndExpand"
                        TextColor="Black"
                        FontSize="Title"/>

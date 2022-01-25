@@ -23,6 +23,11 @@ namespace Fantasy_Biking
             MyTeam_List.ItemsSource = TeamLogic.GetMyTeam();
             Points.Text = Convert.ToString(TeamLogic.GetMyTotalPoints());
             UsernameLabel.Text = MainPage.loggedInUser.Name;
+            // check that not source is null or empty
+            if (!string.IsNullOrEmpty(MainPage.loggedInUser.ProfileImageSrc))
+            {
+                UserPic.Source = ImageSource.FromFile(MainPage.loggedInUser.ProfileImageSrc);
+            }
         }
         private async void UserPic_Clicked(object sender, EventArgs e)
         {

@@ -24,7 +24,7 @@ namespace Fantasy_Biking
             UserPic.Source = ImageSource.FromFile(MainPage.loggedInUser.ProfileImageSrc);
         }
 
-        private async void ChangeProfileImage_Clicked(object sender, EventArgs e)
+        private async void Edit_ProfileImage_Clicked(object sender, EventArgs e)
         {
             var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
             {
@@ -43,6 +43,23 @@ namespace Fantasy_Biking
                 // load the image to display
                 var stream = await result.OpenReadAsync();
                 UserPic.Source = ImageSource.FromStream(() => stream);
+
+                // update the current loggedInUser with this file path
+                int updatedRows;
+                MainPage.loggedInUser.ProfileImageSrc = UserPicturePath;
+                using(SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation))
+                {
+                    sQLiteConnection.CreateTable<Biker>();
+                    updatedRows = sQLiteConnection.Update(MainPage.loggedInUser);
+                }
+                if (updatedRows > 0)
+                {
+                    _ = DisplayAlert("Edit", "Your Image has been edited", "Ok");
+                }
+                else
+                {
+                    _ = DisplayAlert("Failed", "Your Image has not been edited", "Ok");
+                }
             }
         }
 
@@ -78,7 +95,7 @@ namespace Fantasy_Biking
             }
             else
             {
-                _ = DisplayAlert("Failed", "Your Question has not been edited", "Ok");
+                _ = DisplayAlert("Failed", "Your Username has not been edited", "Ok");
             }
         }
 

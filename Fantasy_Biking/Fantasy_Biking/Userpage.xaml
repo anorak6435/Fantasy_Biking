@@ -8,7 +8,7 @@
                    HeightRequest="100"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"/>
-            <Button x:Name="ChangeProfileImage" Text="Edit image" Margin="50, 50, 50, 0" Clicked="ChangeProfileImage_Clicked"/>
+            <Button x:Name="Edit_ProfileImage" Text="Edit image" Margin="50, 50, 50, 0" Clicked="Edit_ProfileImage_Clicked"/>
             <StackLayout Padding="50,50,50,0">
                 <Label Text="Username"
                        HorizontalOptions="CenterAndExpand"

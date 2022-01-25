@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fantasy_Biking.Userpage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image x:Name="UserPic"
+                   Source=""
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Margin="0,100,0,0"/>
+            <StackLayout Padding="50,50,50,0">
+                <Label Text="Username"
+                       HorizontalOptions="CenterAndExpand"
+                       TextColor="Black"
+                       FontSize="Title"
+                       FontAttributes="Bold"/>
+                <Label x:Name="UsernameLabel"
+                       Text="{Binding Name}"
+                       HorizontalOptions="CenterAndExpand"
+                       TextColor="Black"
+                       FontSize="Title"/>
+                <Button Padding="0,0,0,0"
+                        Text="Edit Username"/>
+            </StackLayout>
+            <StackLayout Padding="50,50,50,0">
+                <Label Text="Password"
+                       HorizontalOptions="CenterAndExpand"
+                       TextColor="Black"
+                       FontSize="Title"
+                       FontAttributes="Bold"/>
+                <Label x:Name="PasswordLabel"
+                       Text="{Binding Password}"
+                       HorizontalOptions="CenterAndExpand"
+                       TextColor="Black"
+                       FontSize="Title"/>
+                <Button Padding="0,0,0,0"
+                        Text="Edit Password"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

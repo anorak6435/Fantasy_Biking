@@ -21,6 +21,24 @@ namespace Fantasy_Biking
         protected override void OnAppearing()
         {
             MyTeam_List.ItemsSource = TeamLogic.GetMyTeam();
+            UsernameLabel.Text = MainPage.loggedInUser.Name;
+        }
+
+        private async void MyTeam_navigation(object sender, EventArgs e)
+        {
+            {
+                await Navigation.PushAsync(new CyclistsPage());
+            }
+        }
+
+        private async void MyRace_navigation(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RacesPage());
+        }
+
+        private async void UserPic_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Userpage());
         }
     }
 }

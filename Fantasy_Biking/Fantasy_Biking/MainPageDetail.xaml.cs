@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fantasy_Biking.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,11 @@ namespace Fantasy_Biking
         public MainPageDetail()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            MyTeam_List.ItemsSource = TeamLogic.GetMyTeam();
         }
     }
 }

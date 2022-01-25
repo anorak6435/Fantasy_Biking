@@ -16,6 +16,7 @@ namespace Fantasy_Biking.Logic
             // hardcoded version of request response
             bikers.Add(new Biker
             {
+                Id = 0,
                 Position = 1,
                 Name = "Plapp Luke",
                 CountryCode = "au",
@@ -27,6 +28,7 @@ namespace Fantasy_Biking.Logic
 
             bikers.Add(new Biker
             {
+                Id = 1,
                 Position = 2,
                 Name = "Lonardi Giovanni",
                 CountryCode = "it",
@@ -38,6 +40,7 @@ namespace Fantasy_Biking.Logic
 
             bikers.Add(new Biker
             {
+                Id = 2,
                 Position = 3,
                 Name = "Capiot Amaury",
                 CountryCode = "be",

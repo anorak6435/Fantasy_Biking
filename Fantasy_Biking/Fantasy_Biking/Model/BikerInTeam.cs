@@ -5,10 +5,12 @@ using System.Text;
 
 namespace Fantasy_Biking.Model
 {
-    public class Team
+    // connect bikers to teams
+    public class BikerInTeam
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public int TeamId { get; set; }
+        public int BikerId { get; set; }
     }
 }

@@ -21,7 +21,7 @@
                         BackgroundColor="AliceBlue">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell/>
+                            <TextCell Text="{Binding Name}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

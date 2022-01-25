@@ -21,6 +21,10 @@ namespace Fantasy_Biking
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            // load bikers on my team
+            List<Biker> MyTeam = TeamLogic.GetMyTeam();
+            My_Cyclists.ItemsSource = MyTeam;
+
             List<Biker> Bikers = BikerLogic.AllBikers();
             Swap_Cyclists.ItemsSource = Bikers;
         }
@@ -32,7 +36,11 @@ namespace Fantasy_Biking
                DisplayAlert("Canceling!", "please select a cyclist to add!", "cancel");
             }
             // there is an item selected
-            TeamLogic.AddPlayerToTeam(Swap_Cyclists.SelectedItem as Biker);
+            TeamLogic.AddBikerToTeam(Swap_Cyclists.SelectedItem as Biker);
+
+            // reload bikers on my team
+            List<Biker> MyTeam = TeamLogic.GetMyTeam();
+            My_Cyclists.ItemsSource = MyTeam;
         }
     }
 }

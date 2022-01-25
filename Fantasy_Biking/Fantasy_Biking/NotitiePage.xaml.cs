@@ -35,16 +35,17 @@ namespace Fantasy_Biking
             SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation);
             sQLiteConnection.CreateTable<Note>();
             int insertedRows = sQLiteConnection.Insert(note);
-            sQLiteConnection.Close();
             if (insertedRows > 1 || insertedRows < 200)
             {
                 _ = DisplayAlert("Gelukt!", "Je vraag is toegevoegd aan de database!", "Ok");
                 var notes = sQLiteConnection.Table<Note>().ToList();
+                sQLiteConnection.Close();
                 My_Noteslist.ItemsSource = notes;
             }
             else
             {
                 _ = DisplayAlert("Al wat gedronken?", "probeer je vraag wat langer of korter te maken", "Ok");
+                sQLiteConnection.Close();
             }
         }
 

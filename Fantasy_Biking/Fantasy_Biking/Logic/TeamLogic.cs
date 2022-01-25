@@ -21,6 +21,8 @@ namespace Fantasy_Biking.Logic
             return teams;
         }
 
+
+        // buying the biker
         public static void AddBikerToTeam(Biker biker)
         {
             // insert the team into the table
@@ -37,16 +39,27 @@ namespace Fantasy_Biking.Logic
                     int teamID = teams[0].Id;
                     List<BikerInTeam> bikeInTeam = con.Table<BikerInTeam>().Where(x => x.BikerId == biker.Id && x.TeamId == teamID).ToList();
                     if (bikeInTeam.Count == 0)
-                    {   // no team with this biker found
-                        // add biker to team
-                        con.Insert(new BikerInTeam { BikerId = biker.Id, TeamId = teams[0].Id });
+                    {   // biker is not already in this team
+
+                        // can we affort the biker
+                        if (teams[0].Budget >= biker.Cost)
+                        {
+                            // update the team balance
+                            teams[0].Budget -= biker.Cost;
+                            con.Update(teams[0]);
+
+                            // add biker to team
+                            con.Insert(new BikerInTeam { BikerId = biker.Id, TeamId = teams[0].Id });
+                        }
+                        
                     }
                 }
                 else
                 {   // The user has no team
                     Team newTeam = new Team
                     {
-                        UserId = MainPage.loggedInUser.Id
+                        UserId = MainPage.loggedInUser.Id,
+                        Budget = Constants.TEAM_BUDGET - biker.Cost,
                     };
                     con.Insert(newTeam);
 

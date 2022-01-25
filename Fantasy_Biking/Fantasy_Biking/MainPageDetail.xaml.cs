@@ -22,6 +22,7 @@ namespace Fantasy_Biking
         {
             MyTeam_List.ItemsSource = TeamLogic.GetMyTeam();
             Points.Text = Convert.ToString(TeamLogic.GetMyTotalPoints());
+            UsernameLabel.Text = MainPage.loggedInUser.Name;
         }
     }
 }

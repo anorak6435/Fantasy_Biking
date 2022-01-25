@@ -24,6 +24,7 @@ namespace Fantasy_Biking.Logic
                 PointsPerRaceday = 15.0f,
                 Points = 15,
                 Racedays = 1,
+                Cost = 20,
             });
 
             bikers.Add(new Biker
@@ -36,6 +37,7 @@ namespace Fantasy_Biking.Logic
                 PointsPerRaceday = 15.0f,
                 Points = 15,
                 Racedays = 1,
+                Cost = 17,
             });
 
             bikers.Add(new Biker
@@ -48,6 +50,7 @@ namespace Fantasy_Biking.Logic
                 PointsPerRaceday = 10.0f,
                 Points = 10,
                 Racedays = 1,
+                Cost = 15,
             });
 
             return bikers;

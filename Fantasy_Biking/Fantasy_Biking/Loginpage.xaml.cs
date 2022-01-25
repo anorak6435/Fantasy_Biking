@@ -28,10 +28,7 @@ namespace Fantasy_Biking
         }
         private async void Register_Account(object sender, EventArgs e)
         {
-
-            {
-                await Navigation.PushAsync(new RegisterPage());
-            }
+            await Navigation.PushAsync(new RegisterPage());
         }
         async private void Reset_Password(object sender, EventArgs e)
         {

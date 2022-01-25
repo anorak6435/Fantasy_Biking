@@ -25,8 +25,10 @@ namespace Fantasy_Biking
             if (!couldRegister)
             {
                 await DisplayAlert("Waarschuwing!", errMsg, "cancel");
+            } else
+            {
+                await Navigation.PopAsync();
             }
-            
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Fantasy_Biking
 {
     public partial class MainPage : FlyoutPage
     {
-        public User loggedInUser;
+        public static User loggedInUser;
         public MainPage(User usr)
         {
             InitializeComponent();

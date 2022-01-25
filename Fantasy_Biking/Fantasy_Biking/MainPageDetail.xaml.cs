@@ -28,5 +28,14 @@ namespace Fantasy_Biking
         {
             await Navigation.PushAsync(new Userpage());
         }
+        
+        private async void MyTeam_navigation(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CyclistsPage());
+        }
+        private async void MyRace_navigation(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RacesPage());
+        }
     }
 }

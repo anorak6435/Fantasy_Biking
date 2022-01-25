@@ -52,16 +52,18 @@
                     FontSize="Title"
                     FontAttributes="Bold"/>
                 <Label
+                    x:Name="TotalPointsInTeam"
                     Grid.Row="1"
-                    Text="100120"
+                    Text="0"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     TextColor="Black"
                     FontSize="Title"/>
                 <Label
+                    x:Name="BudgetLeft"
                     Grid.Row="1"
                     Grid.Column="1"
-                    Text="934"
+                    Text="0"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     TextColor="Black"

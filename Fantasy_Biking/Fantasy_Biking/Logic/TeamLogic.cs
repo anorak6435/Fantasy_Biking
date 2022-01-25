@@ -89,5 +89,21 @@ namespace Fantasy_Biking.Logic
             }
             return myTeam;
         }
+
+        public static int GetMyTeamBudget()
+        {
+            int returnbudget = -1;
+            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+            {
+                con.CreateTable<Team>();
+                // what is my teamID
+                List<Team> teams = con.Table<Team>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
+                if (teams.Count > 0)
+                {   // User has a team
+                    returnbudget = teams[0].Budget;
+                }
+            }
+            return returnbudget;
+        }
     }
 }

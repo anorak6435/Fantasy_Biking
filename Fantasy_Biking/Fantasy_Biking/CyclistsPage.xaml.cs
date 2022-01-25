@@ -21,10 +21,34 @@ namespace Fantasy_Biking
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            this.Display_Team_Total_Cost();
+            this.Display_My_Team();
+            this.Display_All_Bikers();
+        }
+
+        private void Display_Team_Total_Cost()
+        {
+            // get sum of cost in my team
+            int costSum = 0;
+            foreach (Biker bik in TeamLogic.GetMyTeam())
+            {
+                costSum += bik.Cost;
+            }
+            TotalPointsInTeam.Text = Convert.ToString(costSum);
+            BudgetLeft.Text = Convert.ToString(TeamLogic.GetMyTeamBudget());
+        }
+
+        private void Display_My_Team()
+        {
             // load bikers on my team
             List<Biker> MyTeam = TeamLogic.GetMyTeam();
             My_Cyclists.ItemsSource = MyTeam;
+        }
 
+        private void Display_All_Bikers()
+        {
+            // load the total list of available bikers
             List<Biker> Bikers = BikerLogic.AllBikers();
             Swap_Cyclists.ItemsSource = Bikers;
         }
@@ -41,6 +65,9 @@ namespace Fantasy_Biking
             // reload bikers on my team
             List<Biker> MyTeam = TeamLogic.GetMyTeam();
             My_Cyclists.ItemsSource = MyTeam;
+
+            // reload the total cost of my team
+            Display_Team_Total_Cost();
         }
     }
 }

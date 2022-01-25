@@ -21,6 +21,7 @@ namespace Fantasy_Biking
         protected override void OnAppearing()
         {
             MyTeam_List.ItemsSource = TeamLogic.GetMyTeam();
+            Points.Text = Convert.ToString(TeamLogic.GetMyTotalPoints());
         }
     }
 }

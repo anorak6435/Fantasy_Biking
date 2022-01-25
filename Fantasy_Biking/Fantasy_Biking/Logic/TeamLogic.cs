@@ -105,5 +105,28 @@ namespace Fantasy_Biking.Logic
             }
             return returnbudget;
         }
+
+        public static int GetMyTotalPoints()
+        {
+            int pointSum = 0;
+            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+            {
+                con.CreateTable<Team>();
+                con.CreateTable<BikerInTeam>();
+                // what is my teamID
+                List<Team> teams = con.Table<Team>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
+                if (teams.Count > 0)
+                {   // User has a team // get bikerIDs from bikers in team
+                    int expectedTeamId = teams[0].Id;
+                    List<BikerInTeam> bikerIds = con.Table<BikerInTeam>().Where(x => x.TeamId == expectedTeamId).ToList();
+                    foreach (BikerInTeam idItems in bikerIds)
+                    {
+                        List<Biker> bik = BikerLogic.AllBikers().Where(x => x.Id == idItems.BikerId).ToList();
+                        pointSum += bik[0].Points;
+                    }
+                }
+            }
+            return pointSum;
+        }
     }
 }

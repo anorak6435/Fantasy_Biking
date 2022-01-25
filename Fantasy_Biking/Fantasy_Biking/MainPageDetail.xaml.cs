@@ -24,5 +24,9 @@ namespace Fantasy_Biking
             Points.Text = Convert.ToString(TeamLogic.GetMyTotalPoints());
             UsernameLabel.Text = MainPage.loggedInUser.Name;
         }
+        private async void UserPic_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Userpage());
+        }
     }
 }

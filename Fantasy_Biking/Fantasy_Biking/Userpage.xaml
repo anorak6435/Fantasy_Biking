@@ -21,7 +21,24 @@
                        TextColor="Black"
                        FontSize="Title"/>
                 <Button Padding="0,0,0,0"
-                        Text="Edit Username"/>
+                        Text="Edit Username"
+                        x:Name="Edit_Username"
+                        Clicked="Edit_Username_Clicked"/>
+                <Editor x:Name="UsernameBodyEntry"
+                        IsVisible="False"
+                        Keyboard="Text"
+                        BackgroundColor="{StaticResource ButtonPrimary}"
+                        AutoSize="TextChanges"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand"
+                        MaxLength="20"
+                        WidthRequest="300"/>
+                <Button Padding="0,0,0,0"
+                        IsVisible="False"
+                        x:Name="ConfirmUsernameEdit"
+                        Text="Confirm"
+                        FontAttributes="Bold"
+                        Clicked="ConfirmUsernameEdit_Clicked"/>
             </StackLayout>
             <StackLayout Padding="50,50,50,0">
                 <Label Text="Password"
@@ -35,7 +52,25 @@
                        TextColor="Black"
                        FontSize="Title"/>
                 <Button Padding="0,0,0,0"
-                        Text="Edit Password"/>
+                        Text="Edit Password"
+                        x:Name="Edit_password"
+                        Clicked="Edit_password_Clicked"
+                        FontAttributes="Bold"/>
+                <Editor x:Name="PasswordBodyEntry"
+                        IsVisible="False"
+                        Keyboard="Text"
+                        BackgroundColor="{StaticResource ButtonPrimary}"
+                        AutoSize="TextChanges"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand"
+                        MaxLength="20"
+                        WidthRequest="300"/>
+                <Button Padding="0,0,0,0"
+                        IsVisible="False"
+                        x:Name="ConfirmPasswordEdit"
+                        Text="Confirm"
+                        FontAttributes="Bold"
+                        Clicked="ConfirmPasswordEdit_Clicked"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

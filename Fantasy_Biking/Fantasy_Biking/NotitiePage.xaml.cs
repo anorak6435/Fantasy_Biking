@@ -248,6 +248,7 @@ namespace Fantasy_Biking
                 EditNotesFrame.IsVisible = false;
                 Add_New_note.IsVisible = false;
                 Show_Note.IsEnabled = true;
+                Edit_info.IsVisible = true;
             }
             if (selected_note is LeagueNote)
             {

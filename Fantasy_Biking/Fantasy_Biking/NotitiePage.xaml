@@ -14,27 +14,154 @@
                          HeightRequest="100">
                 <ListView x:Name="My_Noteslist"
                           BackgroundColor="AliceBlue"
-                          >
+                          ItemSelected="My_Noteslist_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Notitie}"/>
+                            <TextCell Text="{Binding Name}"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <Button x:Name="Add_Note"
-                    Text="Add Note"
-                    Clicked="Add_Note_Clicked"
-                    Margin="50,0,50,0"/>
+            <Button x:Name="Create_new_Note"
+                    Text="Create New Note"
+                    Margin="50,0,50,0"
+                    IsVisible="true"
+                    Clicked="Create_new_Note_Clicked"/>
             <Button x:Name="Delete_Note"
                     Text="Delete Note"
                     Clicked="Delete_Note_Clicked"
-                    Margin="50,0,50,0"/>
-            <Frame>
+                    Margin="50,0,50,0"
+                    IsVisible="false"/>
+            <Button x:Name="Show_Note"
+                    Text="Show Note"
+                    Clicked="Show_Note_Clicked"
+                    Margin="50,0,50,0"
+                    IsVisible="false"
+                    IsEnabled="True"/>
+            <Label x:Name="current_Name_biker"
+                   Text="{Binding Name}"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Padding="0,10,0,10"
+                   TextColor="Black"
+                   IsVisible="false"/>
+            <Label x:Name="current_Name_Race"
+                   Text="{Binding strLeague}"
+                   IsVisible="false"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Padding="0,10,0,10"
+                   TextColor="Black"/>
+            <Frame x:Name="NewNoteFrame"
+                   IsVisible="false">
                 <Editor x:Name="NewNotes"
                         TextColor="Black"
                         AutoSize="TextChanges"/>
             </Frame>
+            <Button x:Name="Add_Biker_Note"
+                    Text="Add Note"
+                    Clicked="Add_Biker_Note_Clicked"
+                    Margin="50,0,50,0"
+                    IsVisible="false"/>
+            <Button x:Name="Add_Race_Note"
+                    Text="Add Note"
+                    Clicked="Add_Race_Note_Clicked"
+                    Margin="50,0,50,0"
+                    IsVisible="false"/>
+            <Button x:Name="Bikernote_Button"
+                    Text="Cyclist Note"
+                    Clicked="Bikernote_Button_Clicked"
+                    Margin="50,0,50,0"
+                    IsVisible="false"/>
+            <Button x:Name="Racenote_Button"
+                    Text="Race Note"
+                    Clicked="Racenote_Button_Clicked"
+                    Margin="50,0,50,0"
+                    IsVisible="false"/>
+            <Label x:Name="BikerTitle"
+                   IsVisible="false"
+                   Text="Select cyclist to note"
+                   FontSize="Title"
+                   HorizontalOptions="Center"
+                   Padding="0,10,0,10"
+                   TextColor="Black"/>
+            <Label x:Name="RaceTitle"
+                   IsVisible="false"
+                   Text="Select Race to note"
+                   FontSize="Title"
+                   HorizontalOptions="Center"
+                   Padding="0,10,0,10"
+                   TextColor="Black"/>
+            <StackLayout Padding="25,0,25,25"
+                         HeightRequest="100"
+                         x:Name="BikerlistFraming"
+                         IsVisible="false">
+                <ListView x:Name="Bikerlist"
+                          BackgroundColor="AliceBlue"
+                          ItemSelected="Bikerlist_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout Padding="25,0,25,25"
+                         HeightRequest="100"
+                         x:Name="RaceslistFraming"
+                         IsVisible="false">
+                <ListView x:Name="Raceslist"
+                          BackgroundColor="AliceBlue"
+                          ItemSelected="Raceslist_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding strLeague}"/>
+                    </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Button x:Name="Biker_selected"
+                    Text="Select Biker"
+                    IsVisible="false"
+                    Margin="50,0,50,0"
+                    Clicked="Biker_selected_Clicked"/>
+            <Button x:Name="Race_selected"
+                    Text="Select Race"
+                    IsVisible="false"
+                    Margin="50,0,50,0"
+                    Clicked="Race_selected_Clicked"/>
+            <Label x:Name="Note_name"
+                   IsVisible="false"
+                   Text="{Binding Name}"
+                   FontSize="Title"
+                   HorizontalOptions="Center"
+                   Padding="0,10,0,10"
+                   TextColor="Black"
+                   FontAttributes="Bold"/>
+            <Label x:Name="Note_info"
+                   IsVisible="false"
+                   Text="{Binding Name}"
+                   HorizontalOptions="Center"
+                   Padding="0,10,0,10"
+                   TextColor="Black"/>
+            <Button x:Name="Edit_info"
+                    Text="Edit info"
+                    IsVisible="false"
+                    Margin="50,0,50,0"
+                    Clicked="Edit_info_Clicked"/>
+            <Frame x:Name="EditNotesFrame"
+                   IsVisible="false">
+                <Editor x:Name="EditNotes"
+                        TextColor="Black"
+                        AutoSize="TextChanges"/>
+            </Frame>
+            <Button x:Name="Add_New_note"
+                    Text="Add New note"
+                    IsVisible="false"
+                    Margin="50,0,50,0"
+                    Clicked="Add_New_note_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

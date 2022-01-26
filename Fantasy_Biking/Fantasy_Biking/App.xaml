@@ -14,6 +14,9 @@
                 <Setter Property="BarBackground" Value="{StaticResource ButtonPrimary}"/>
                 <Setter Property="TabIndex" Value="{StaticResource ButtonPrimary}"/>
             </Style>
+            <Style TargetType="TextCell">
+                <Setter Property="TextColor" Value="{StaticResource ButtonText}"/>
+            </Style>
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource ButtonPrimary}"/>
                 <Setter Property="TextColor" Value="{StaticResource ButtonText}"/>

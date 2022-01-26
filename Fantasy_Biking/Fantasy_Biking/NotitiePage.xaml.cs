@@ -40,7 +40,8 @@ namespace Fantasy_Biking
             SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation);
             sQLiteConnection.CreateTable<BikerNote>();
             int insertedRows = sQLiteConnection.Insert(note);
-            if (NewNotes.Text.Length > 1 && NewNotes.Text.Length < 200)
+
+            if (!string.IsNullOrEmpty(NewNotes.Text) && NewNotes.Text.Length > 1 && NewNotes.Text.Length < 200)
             {
                 _ = DisplayAlert("Worked!", "Your note has been added", "Ok");
                 sQLiteConnection.Close();
@@ -71,7 +72,7 @@ namespace Fantasy_Biking
             SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation);
             sQLiteConnection.CreateTable<LeagueNote>();
             int insertedRows = sQLiteConnection.Insert(note);
-            if (NewNotes.Text.Length > 1 && NewNotes.Text.Length < 200)
+            if (!string.IsNullOrEmpty(NewNotes.Text) && NewNotes.Text.Length > 1 && NewNotes.Text.Length < 200)
             {
                 _ = DisplayAlert("Worked!", "Your note has been added", "Ok");
                 sQLiteConnection.Close();

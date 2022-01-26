@@ -2,6 +2,7 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,66 @@ namespace Fantasy_Biking
 
         private async void Edit_ProfileImage_Clicked(object sender, EventArgs e)
         {
+            string action = await DisplayActionSheet("Option: From where get the image?", "Cancel", null, "Camera", "Gallery");
+            switch (action)
+            {
+                case "Camera":
+                    await PicFromCamera();
+                    break;
+                case "Gallery":
+                    PicFromGallery();
+                    break;
+            }
+        }
+
+        private async Task PicFromCamera()
+        {
+
+            var photo = await MediaPicker.CapturePhotoAsync();
+            await LoadPhotoAsync(photo);
+
+            if (UserPicturePath != string.Empty)
+            {
+                // picture succesfully taken
+                // update the current loggedInUser with this file path
+                int updatedRows;
+                MainPage.loggedInUser.ProfileImageSrc = UserPicturePath;
+                using (SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation))
+                {
+                    sQLiteConnection.CreateTable<User>();
+                    updatedRows = sQLiteConnection.Update(MainPage.loggedInUser);
+                }
+                if (updatedRows > 0)
+                {
+                    UserPic.Source = UserPicturePath; // Update the picture on the page
+                    _ = DisplayAlert("Edit", "Your Image has been edited", "Ok");
+                }
+                else
+                {
+                    _ = DisplayAlert("Failed", "Your Image has not been edited", "Ok");
+                }
+            }
+        }
+
+        async Task LoadPhotoAsync(FileResult photo)
+        {
+            // canceled
+            if (photo == null)
+            {
+                UserPicturePath = string.Empty;
+                return;
+            }
+            // save the file into local storage
+            var newFile = Path.Combine(FileSystem.CacheDirectory, photo.FileName);
+            using (var stream = await photo.OpenReadAsync())
+            using (var newStream = File.OpenWrite(newFile))
+                await stream.CopyToAsync(newStream);
+
+            UserPicturePath = newFile;
+        }
+
+        private async void PicFromGallery()
+        {
             var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
             {
                 Title = "Kies uw foto"
@@ -33,7 +94,7 @@ namespace Fantasy_Biking
 
             if (result is null)
             {
-                _ = DisplayAlert("Let Op!", "Geen afbeelding ontvangen!", "terug");
+                _ = DisplayAlert("Warning!", "No Image given!", "cancel");
             }
             else
             {
@@ -47,9 +108,9 @@ namespace Fantasy_Biking
                 // update the current loggedInUser with this file path
                 int updatedRows;
                 MainPage.loggedInUser.ProfileImageSrc = UserPicturePath;
-                using(SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation))
+                using (SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation))
                 {
-                    sQLiteConnection.CreateTable<Biker>();
+                    sQLiteConnection.CreateTable<User>();
                     updatedRows = sQLiteConnection.Update(MainPage.loggedInUser);
                 }
                 if (updatedRows > 0)

@@ -39,3 +39,7 @@ using Android.App;
 // Add these properties if you would like to filter out devices that do not have cameras, or set to false to make them optional
 [assembly: UsesFeature("android.hardware.camera", Required = true)]
 [assembly: UsesFeature("android.hardware.camera.autofocus", Required = true)]
+// needed for permission to check internet connectivity
+[assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
+// needed for permission to vibrate
+[assembly: UsesPermission(Android.Manifest.Permission.Vibrate)]

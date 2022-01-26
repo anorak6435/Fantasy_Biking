@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace Fantasy_Biking
 {
@@ -54,6 +55,14 @@ namespace Fantasy_Biking
                 await DisplayAlert("Waarschuwing!", msgErr, "cancel");
             } else
             {
+                var current = Connectivity.NetworkAccess;
+                if (current != NetworkAccess.Internet)
+                {
+                    Vibration.Vibrate();
+                    //there is no connection with the internet
+                    await DisplayAlert("Geen verbinding",
+                        "het schijnt dat er geen verbinding is. niet alle waarde zullen up to date zijn", "ga door!");
+                }
                 // We found a user
                 await Navigation.PushAsync(new MainPage(usr));
             }

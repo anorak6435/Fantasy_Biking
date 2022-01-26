@@ -52,16 +52,18 @@ namespace Fantasy_Biking
 
             if (usr == null)
             {
-                await DisplayAlert("Waarschuwing!", msgErr, "cancel");
+                Vibration.Vibrate();
+                await DisplayAlert("Warning!", msgErr, "cancel");
             } else
             {
                 var current = Connectivity.NetworkAccess;
                 if (current != NetworkAccess.Internet)
                 {
+                    //makes device vibrate when no internet connection
                     Vibration.Vibrate();
                     //there is no connection with the internet
-                    await DisplayAlert("Geen verbinding",
-                        "het schijnt dat er geen verbinding is. niet alle waarde zullen up to date zijn", "ga door!");
+                    await DisplayAlert("No Connection",
+                        "it appears there is no connection. some value's might not be up to date", "proceed!");
                 }
                 // We found a user
                 await Navigation.PushAsync(new MainPage(usr));

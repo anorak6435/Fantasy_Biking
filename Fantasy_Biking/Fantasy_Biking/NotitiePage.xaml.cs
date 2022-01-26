@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace Fantasy_Biking
 {
@@ -39,7 +40,7 @@ namespace Fantasy_Biking
             SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation);
             sQLiteConnection.CreateTable<BikerNote>();
             int insertedRows = sQLiteConnection.Insert(note);
-            if (insertedRows > 1 || insertedRows < 200)
+            if (NewNotes.Text.Length > 1 && NewNotes.Text.Length < 200)
             {
                 _ = DisplayAlert("Worked!", "Your note has been added", "Ok");
                 sQLiteConnection.Close();
@@ -54,6 +55,7 @@ namespace Fantasy_Biking
             }
             else
             {
+                Vibration.Vibrate();
                 _ = DisplayAlert("To Short", "try to make your note a little longer", "Ok");
                 sQLiteConnection.Close();
             }
@@ -69,7 +71,7 @@ namespace Fantasy_Biking
             SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation);
             sQLiteConnection.CreateTable<LeagueNote>();
             int insertedRows = sQLiteConnection.Insert(note);
-            if (insertedRows > 1 || insertedRows < 200)
+            if (NewNotes.Text.Length > 1 && NewNotes.Text.Length < 200)
             {
                 _ = DisplayAlert("Worked!", "Your note has been added", "Ok");
                 sQLiteConnection.Close();
@@ -83,6 +85,7 @@ namespace Fantasy_Biking
             }
             else
             {
+                Vibration.Vibrate();
                 _ = DisplayAlert("To Short", "try to make your note a little longer", "Ok");
                 sQLiteConnection.Close();
             }

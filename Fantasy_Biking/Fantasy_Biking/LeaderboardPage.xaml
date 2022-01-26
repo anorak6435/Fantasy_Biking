@@ -21,7 +21,7 @@
                         BackgroundColor="AliceBlue">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextCell/>
+                                <TextCell TextColor="Black"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
@@ -40,7 +40,7 @@
                         BackgroundColor="AliceBlue">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextCell/>
+                                <TextCell TextColor="Black"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

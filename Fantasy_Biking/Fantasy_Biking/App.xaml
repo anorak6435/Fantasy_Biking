@@ -15,7 +15,7 @@
                 <Setter Property="TabIndex" Value="{StaticResource ButtonPrimary}"/>
             </Style>
             <Style TargetType="TextCell">
-                <Setter Property="TextColor" Value="{StaticResource ButtonText}"/>
+                <Setter Property="TextColor" Value="Black"/>
             </Style>
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource ButtonPrimary}"/>

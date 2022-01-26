@@ -17,7 +17,8 @@
                           ItemSelected="My_Noteslist_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Name}"/>
+                            <TextCell Text="{Binding Name}"
+                                      TextColor="Black"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -103,7 +104,8 @@
                           ItemSelected="Bikerlist_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Name}"/>
+                            <TextCell Text="{Binding Name}"
+                                      TextColor="Black"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -117,7 +119,8 @@
                           ItemSelected="Raceslist_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding strLeague}"/>
+                            <TextCell Text="{Binding strLeague}"
+                                      TextColor="Black"/>
                     </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

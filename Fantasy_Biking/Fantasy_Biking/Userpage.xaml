@@ -5,11 +5,11 @@
     <ContentPage.Content>
         <StackLayout>
             <Image x:Name="UserPic"
-                   HeightRequest="100"
+                   WidthRequest="70"
                    VerticalOptions="Center"
                    HorizontalOptions="Center"/>
-            <Button x:Name="Edit_ProfileImage" Text="Edit image" Margin="50, 50, 50, 0" Clicked="Edit_ProfileImage_Clicked"/>
-            <StackLayout Padding="50,50,50,0">
+            <Button x:Name="Edit_ProfileImage" Text="Edit image" Margin="50, 10, 50, 0" Clicked="Edit_ProfileImage_Clicked"/>
+            <StackLayout Padding="50,20,50,0">
                 <Label Text="Username"
                        HorizontalOptions="CenterAndExpand"
                        TextColor="Black"
@@ -39,7 +39,7 @@
                         FontAttributes="Bold"
                         Clicked="ConfirmUsernameEdit_Clicked"/>
             </StackLayout>
-            <StackLayout Padding="50,50,50,0">
+            <StackLayout Padding="50,20,50,0">
                 <Label Text="Password"
                        HorizontalOptions="CenterAndExpand"
                        TextColor="Black"

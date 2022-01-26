@@ -22,7 +22,7 @@ namespace Fantasy_Biking
             using (SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation))
             {
                 sQLiteConnection.CreateTable<BikerNote>();
-                var notes = sQLiteConnection.Table<BikerNote>().ToList();
+                sQLiteConnection.CreateTable<LeagueNote>();
                 My_Noteslist.ItemsSource = NotesLogic.GetAllNotes();
             }
 
@@ -220,6 +220,7 @@ namespace Fantasy_Biking
                 Note_info.IsVisible = true;
                 Edit_info.IsVisible = true;
             }
+
         }
 
         private void Edit_info_Clicked(object sender, EventArgs e)

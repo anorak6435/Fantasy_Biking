@@ -13,7 +13,7 @@
             <Button x:Name="NewProfileImage" Text="Change Image" Clicked="NewProfileImage_Clicked"/>
             <Entry x:Name="userNameEntry" Placeholder="Gebruikersnaam"/>
             <Entry x:Name="PasswordEntry" Placeholder="Wachtwoord"/>
-            <Entry x:Name="PasswordRepeatEntry" Placeholder="Opniew Wachtwoord"/>
+            <Entry x:Name="PasswordRepeatEntry" Placeholder="Opnieuw Wachtwoord"/>
             <Button x:Name="RegisterBtn" Text="Register" Clicked="RegisterBtn_Clicked"/>
         </StackLayout>
     </ContentPage.Content>

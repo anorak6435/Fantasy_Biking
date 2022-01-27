@@ -5,8 +5,8 @@
              Title="Cyclists">
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout>
-            <Label
+            <StackLayout>
+                <Label
                 x:Name="Current_Team"
                 Padding="0,25,0,0"
                 Text="Current Team"
@@ -15,36 +15,36 @@
                 FontSize="Title"
                 FontAttributes="Bold"
                 TextColor="Black"/>
-            <StackLayout Padding="25,0,25,25" HeightRequest="200">
-                <ListView HeightRequest="200" 
+                <StackLayout Padding="25,0,25,25" HeightRequest="200">
+                    <ListView HeightRequest="200" 
                     x:Name="My_Cyclists"
                         BackgroundColor="AliceBlue">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding Name}"
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding Name}"
                                       TextColor="Black"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
 
-            </StackLayout>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*" />
-                    <RowDefinition Height="50" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Label
+                </StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label
                     Text="Points total"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     TextColor="Black"
                     FontSize="Title"
                     FontAttributes="Bold"/>
-                <Label
+                    <Label
                     Grid.Column="1"
                     Text="Points left"
                     HorizontalOptions="Center"
@@ -52,7 +52,7 @@
                     TextColor="Black"
                     FontSize="Title"
                     FontAttributes="Bold"/>
-                <Label
+                    <Label
                     x:Name="TotalPointsInTeam"
                     Grid.Row="1"
                     Text="0"
@@ -60,7 +60,7 @@
                     VerticalOptions="Center"
                     TextColor="Black"
                     FontSize="Title"/>
-                <Label
+                    <Label
                     x:Name="BudgetLeft"
                     Grid.Row="1"
                     Grid.Column="1"
@@ -69,21 +69,21 @@
                     VerticalOptions="Center"
                     TextColor="Black"
                     FontSize="Title"/>
-            </Grid>
-            <Label
+                </Grid>
+                <Label
                 Text="Next Race"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 TextColor="Black"
                 FontSize="Title"
                 FontAttributes="Bold"/>
-            <Image
+                <Image
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 x:Name="Race_Statistics"
                 Source="Placeholder.png"
                 WidthRequest="300"/>
-            <Label
+                <Label
                 Text="Swap Cyclists"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"

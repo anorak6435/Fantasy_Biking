@@ -4,8 +4,8 @@
              x:Class="Fantasy_Biking.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#A9E060</Color>
-            <Color x:Key="ButtonPrimary">#7FF75E</Color>
+            <Color x:Key="Primary">#F5B222</Color>
+            <Color x:Key="ButtonPrimary">#F51E16</Color>
             <Color x:Key="ButtonText">Black</Color>
             <Style TargetType="NavigationPage">
                 <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>

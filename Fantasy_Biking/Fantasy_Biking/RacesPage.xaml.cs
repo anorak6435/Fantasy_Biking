@@ -23,8 +23,7 @@ namespace Fantasy_Biking
         {
             base.OnAppearing();
             List<League> leagues = await RaceLogic.GetAllLeagues();
-            List<League> cyclingLeagues = leagues.FindAll(l => l.strSport == "Cycling"); // filter the cycling leagues
-            Race_List.ItemsSource = cyclingLeagues;
+            Race_List.ItemsSource = leagues;
         }
     }
 }

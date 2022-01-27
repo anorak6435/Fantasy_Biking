@@ -22,6 +22,7 @@ namespace Fantasy_Biking.Logic
                 var json = await response.Content.ReadAsStringAsync();
                 var leagueResponse = JsonConvert.DeserializeObject<LeagueResponse>(json);
                 leagues = leagueResponse.leagues as List<League>;
+                leagues = leagues.FindAll(l => l.strSport == "Cycling"); // filter the cycling leagues
             }
             return leagues;
         }

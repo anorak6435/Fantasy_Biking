@@ -6,7 +6,7 @@
         <ResourceDictionary>
             <Color x:Key="Primary">#F5B222</Color>
             <Color x:Key="ButtonPrimary">#F51E16</Color>
-            <Color x:Key="ButtonText">Black</Color>
+            <Color x:Key="ButtonText">White</Color>
             <Style TargetType="NavigationPage">
                 <Setter Property="BackgroundColor" Value="{StaticResource Primary}"/>
                 <Setter Property="BarTextColor" Value="{StaticResource ButtonText}"/>

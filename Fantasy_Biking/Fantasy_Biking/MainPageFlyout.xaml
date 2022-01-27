@@ -4,7 +4,7 @@
              x:Class="Fantasy_Biking.MainPageFlyout"
              Title="Flyout">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="#F5B222">
             <Label
                 Text="Navigation"
                 VerticalOptions="Center" HorizontalOptions="Center" Padding="0,30,0,30" FontSize="Title"/>

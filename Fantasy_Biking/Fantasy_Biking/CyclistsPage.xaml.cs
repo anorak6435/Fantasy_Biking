@@ -126,6 +126,9 @@ namespace Fantasy_Biking
             Delete_button_myTeam.IsVisible = false;
             Player_Info.IsVisible = false;
             Display_My_Team();
+
+            // reload the total cost of my team
+            Display_Team_Total_Cost();
         }
 
         private void Delete_button_myResreve_Clicked(object sender, EventArgs e)
@@ -134,6 +137,9 @@ namespace Fantasy_Biking
             TeamLogic.DeleteReservecyclist(currentbiker);
             Delete_button_myResreve.IsVisible = false;
             Display_My_Reserve();
+
+            // reload the total cost of my team
+            Display_Team_Total_Cost();
         }
 
         private void Reserve_Cyclists_ItemSelected(object sender, SelectedItemChangedEventArgs e)

@@ -215,6 +215,10 @@ namespace Fantasy_Biking.Logic
 
                 };
                 List<BikerInTeam> bit = sQLiteConnection.Table<BikerInTeam>().Where(x => currentTeam.TeamId == x.TeamId && currentTeam.BikerId == x.BikerId).ToList();
+
+                // update the teams budget
+                teams[0].Budget += bikerinteam.Cost;
+                sQLiteConnection.Update(teams[0]);
                 deletedRows = sQLiteConnection.Delete(bit[0]);
             }
             return deletedRows;
@@ -234,6 +238,10 @@ namespace Fantasy_Biking.Logic
 
                 };
                 List<ReserveInTeam> bit = sQLiteConnection.Table<ReserveInTeam>().Where(x => currentTeam.TeamId == x.TeamId && currentTeam.BikerId == x.BikerId).ToList();
+
+                // update the teams budget
+                teams[0].Budget += bikerinteam.Cost;
+                sQLiteConnection.Update(teams[0]);
                 deletedRows = sQLiteConnection.Delete(bit[0]);
             }
             return deletedRows;

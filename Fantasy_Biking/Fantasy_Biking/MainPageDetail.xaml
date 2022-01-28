@@ -40,19 +40,16 @@
                 HorizontalTextAlignment="Center"
                 FontSize="Title"
                 TextColor="Black"/>
-            <Label
+            <Button
                 x:Name="MyTeam_Title"
-                Padding="0,0,0,0"
+                Padding="15,0,15,0"
                 Text="My Team"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 FontSize="Title"
                 FontAttributes="Bold"
-                TextColor="Black">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="MyTeam_navigation"/>
-                </Label.GestureRecognizers>
-            </Label>
+                TextColor="Black"
+                Clicked="MyTeam_navigation"/>
             <StackLayout Padding="25,0,25,25" HeightRequest="150">
                 <ListView
                     x:Name="MyTeam_List"
@@ -65,19 +62,15 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <Label
+            <Button
                 x:Name="NextRace_Title"
-                Padding="0,0,0,0"
-                Text="{Binding strLeague}"
+                Padding="5,0,5,0"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 FontSize="Title"
                 FontAttributes="Bold"
-                TextColor="Black">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="MyRace_navigation"/>
-                </Label.GestureRecognizers>
-            </Label>
+                TextColor="Black"
+                Clicked="MyRace_navigation"/>
             <Image x:Name="NextRace_Statistics" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="100"
                    Source="Placeholder.png"/>
             <Label

@@ -12,51 +12,72 @@
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <StackLayout Padding="0,0,20,0"  Grid.Row="1" Grid.Column="2">
-                <Frame HorizontalOptions="End" CornerRadius="100" IsClippedToBounds="True" Padding="0,0,0,0" WidthRequest="30" HeightRequest="30">
-                    <ImageButton x:Name="UserPic" Source="profilepic" HorizontalOptions="FillAndExpand" Aspect="AspectFill" WidthRequest="800" HeightRequest="10" Clicked="UserPic_Clicked"/>
+            <StackLayout Padding="0,0,20,0"
+                         Grid.Row="1"
+                         Grid.Column="2">
+                <Frame HorizontalOptions="End"
+                       CornerRadius="100"
+                       IsClippedToBounds="True"
+                       Padding="0,0,0,0"
+                       WidthRequest="30"
+                       HeightRequest="30">
+                    <ImageButton x:Name="UserPic"
+                                 Source="profilepic"
+                                 HorizontalOptions="FillAndExpand"
+                                 Aspect="AspectFill"
+                                 WidthRequest="800"
+                                 HeightRequest="10"
+                                 Clicked="UserPic_Clicked"/>
                 </Frame>
             </StackLayout>
-            <Label Margin="0,0,0,0" x:Name="UsernameLabel" Grid.Row="1" Grid.Column="1" Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalTextAlignment="End" FontAttributes="Bold"/>
+            <Label Margin="0,0,0,0"
+                   x:Name="UsernameLabel"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Text="{Binding Name}"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="End"
+                   FontAttributes="Bold"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout>
-            <Label
-                x:Name="Points_Title"
-                Padding="0,30,0,0"
-                Text="Points Total"
-                HorizontalOptions="CenterAndExpand"
-                FontSize="Title"
-                HorizontalTextAlignment="Center"
-                FontAttributes="Bold"
-                TextColor="Black"/>
-            <Label
-                x:Name="Points"
-                Padding="40,0,40,25"
-                Text="10023"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                FontSize="Title"
-                TextColor="Black"/>
-            <Label
-                x:Name="MyTeam_Title"
-                Padding="0,0,0,0"
-                Text="My Team"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                FontSize="Title"
-                FontAttributes="Bold"
-                TextColor="Black">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="MyTeam_navigation"/>
-                </Label.GestureRecognizers>
-            </Label>
+            <Label x:Name="Points_Title"
+                   Padding="0,30,0,0"
+                   Text="Points Total"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="Title"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   TextColor="Black"/>
+            <Label x:Name="Points"
+                   Padding="40,0,40,25"
+                   Text="10023"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Title"
+                   TextColor="Black"/>
+            <Label x:Name="MyTeam_Title"
+                   Padding="0,0,0,0"
+                   Text="My Team"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   TextColor="Black"/>
+            <Button x:Name="MyTeamnavigation"
+                    Text="Go to My Team"
+                    FontAttributes="Italic"
+                    FontSize="Caption"
+                    Margin="110,0,110,0"
+                    HeightRequest="40"
+                    Clicked="MyTeam_navigation"/>
             <StackLayout Padding="25,0,25,25" HeightRequest="150">
                 <ListView
                     x:Name="MyTeam_List"
-                        BackgroundColor="AliceBlue">
+                    BackgroundColor="AliceBlue"
+                    ItemSelected="MyTeam_List_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Name}"
@@ -65,22 +86,79 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <Label
-                x:Name="NextRace_Title"
-                Padding="0,0,0,0"
-                Text="{Binding strLeague}"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                FontSize="Title"
-                FontAttributes="Bold"
-                TextColor="Black">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="MyRace_navigation"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <Image x:Name="NextRace_Statistics" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="100"
-                   Source="Placeholder.png"/>
-            <Label
+            <Label x:Name="Name_Current_Player"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   TextColor="Black"/>
+            <Label x:Name="Info_current_player"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontAttributes="Bold"
+                   TextColor="Black"/>
+            <Grid x:Name="Player_Info"
+                      IsVisible="false">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Position"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="Medium"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Grid.Column="0"
+                       Grid.Row="0"/>
+                <Label x:Name="Current_cyclist_position"
+                       Text="{Binding Position}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="Medium"
+                       TextColor="Black"
+                       Grid.Column="0"
+                       Grid.Row="1"/>
+                <Label Text="Flag"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="Medium"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       Grid.Column="1"
+                       Grid.Row="0"/>
+                <Image x:Name="Current_cyclis_Flag"
+                       Source="{Binding CountryFlag}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Aspect="AspectFill"
+                       HeightRequest="50"
+                       WidthRequest="75"
+                       Grid.Column="1"
+                       Grid.Row="1"/>
+            </Grid>
+            <Label x:Name="NextRace_Title"
+                   Padding="0,0,0,0"
+                   Text="{Binding strLeague}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   TextColor="Black"/>
+            <Button x:Name="MyRacenavigation"
+                    Text="Go to My Team"
+                    FontAttributes="Italic"
+                    FontSize="Caption"
+                    Margin="110,0,110,0"
+                    HeightRequest="40"
+                    Clicked="MyRace_navigation"/>
+                <Label
                 x:Name="NextRace_Info_Title"
                 Padding="0,0,0,0"
                 Text="Race Info"

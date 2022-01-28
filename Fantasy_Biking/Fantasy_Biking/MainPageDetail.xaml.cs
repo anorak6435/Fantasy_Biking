@@ -18,11 +18,18 @@ namespace Fantasy_Biking
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             MyTeam_List.ItemsSource = TeamLogic.GetMyTeam();
             Points.Text = Convert.ToString(TeamLogic.GetMyTotalPoints());
             UsernameLabel.Text = MainPage.loggedInUser.Name;
+            var allmiles = await Mile_Logic.AllMiles();
+            var lastRace = allmiles.Last();
+            var allleagues = await RaceLogic.GetAllLeagues();
+            var matchesleague = allleagues.Where(x => x.idLeague == lastRace.LeagueId).ToList();
+            NextRace_Title.Text = matchesleague[0].strLeague;
+            NextRace_Info.Text = lastRace.Miles.ToString() + "KM";
+
             // check that not source is null or empty
             if (!string.IsNullOrEmpty(MainPage.loggedInUser.ProfileImageSrc))
             {

@@ -68,7 +68,7 @@
             <Label
                 x:Name="NextRace_Title"
                 Padding="0,0,0,0"
-                Text="Next race name"
+                Text="{Binding strLeague}"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 FontSize="Title"
@@ -92,7 +92,7 @@
             <Label
                 x:Name="NextRace_Info"
                 Padding="40,0,40,0"
-                Text="Lorem Ipsum Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                Text="{Binding Miles}"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"

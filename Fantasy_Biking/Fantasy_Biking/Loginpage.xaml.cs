@@ -18,6 +18,7 @@ namespace Fantasy_Biking
         public Loginpage()
         {
             InitializeComponent();
+            Init();
         }
         protected override bool OnBackButtonPressed()
         {
@@ -38,8 +39,8 @@ namespace Fantasy_Biking
 
         void Init()
         {
-
             Entry_Username.Completed += (s, e) => Entry_Password.Focus();
+            Entry_Password.Completed += (s, e) => CheckInformation(s, e);
         }
         private async void Register_Account(object sender, EventArgs e)
         {

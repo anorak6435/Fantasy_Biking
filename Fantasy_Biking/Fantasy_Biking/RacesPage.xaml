@@ -5,10 +5,12 @@
              Title="Races">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Padding="25,25,25,25" HeightRequest="150">
+            <StackLayout Padding="25,25,25,25"
+                         HeightRequest="150">
                 <ListView HeightRequest="100" 
-                    x:Name="Race_List"
-                        BackgroundColor="AliceBlue">
+                          x:Name="Race_List"
+                          BackgroundColor="AliceBlue"
+                          ItemSelected="Race_List_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding strLeague}"
@@ -17,30 +19,25 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <Label
-                x:Name="Races_List"
-                Padding="0,0,0,0"
-                Text="Selected Race"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                FontSize="Title"
-                FontAttributes="Bold"
-                TextColor="Black"/>
-            <Label
-                x:Name="NextRace_Info"
-                Padding="40,0,40,0"
-                Text="Lorem Ipsum Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,
-                adipisci velit,Lorem Ipsum Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,
-                adipisci velit,Lorem Ipsum Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                TextColor="Black"/>
-            <Image
-                x:Name="RaceStatistics"
-                Source="Placeholder.png"
-                WidthRequest="300"/>
-
+            <Label Text="{Binding Strname}"
+                   x:Name="Name_Current_League"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   FontSize="Title"
+                   FontAttributes="Bold"
+                   TextColor="Black"/>
+            <Label Text="{Binding Mile}"
+                   x:Name="Miles_Current_Race"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   TextColor="Black"/>
+            <Label x:Name="Info_current_League"
+                   Padding="40,0,40,0"
+                   Text="{Binding Notitie}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   TextColor="Black"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

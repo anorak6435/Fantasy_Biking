@@ -37,14 +37,12 @@ namespace Fantasy_Biking
             note.Biker_Id = SelectedBiker.Id;
             note.Notitie = NewNotes.Text;
             note.Name = SelectedBiker.Name;
-            SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation);
-            sQLiteConnection.CreateTable<BikerNote>();
-            int insertedRows = sQLiteConnection.Insert(note);
 
             if (!string.IsNullOrEmpty(NewNotes.Text) && NewNotes.Text.Length > 1 && NewNotes.Text.Length < 200)
             {
+                // insert the note into the database
+                NotesLogic.InsertBikerNote(note);
                 _ = DisplayAlert("Worked!", "Your note has been added", "Ok");
-                sQLiteConnection.Close();
                 My_Noteslist.ItemsSource = NotesLogic.GetAllNotes();
                 BikerTitle.IsVisible = false;
                 Add_Biker_Note.IsVisible = false;
@@ -52,30 +50,32 @@ namespace Fantasy_Biking
                 current_Name_biker.IsVisible = false;
                 Create_new_Note.IsVisible = true;
                 NewNotes.Text = "";
-
             }
             else
             {
                 Vibration.Vibrate();
                 _ = DisplayAlert("To Short", "try to make your note a little longer", "Ok");
-                sQLiteConnection.Close();
             }
         }
         //button adds new race note to the My notes list##
         private void Add_Race_Note_Clicked(object sender, EventArgs e)
         {
+            // create a note to be added to the data
             LeagueNote note = new LeagueNote();
             var SelectedLeague = Raceslist.SelectedItem as League;
             note.League_Id = SelectedLeague.idLeague;
             note.Notitie = NewNotes.Text;
             note.Name = SelectedLeague.strLeague;
-            SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation);
-            sQLiteConnection.CreateTable<LeagueNote>();
-            int insertedRows = sQLiteConnection.Insert(note);
-            if (!string.IsNullOrEmpty(NewNotes.Text) && NewNotes.Text.Length > 1 && NewNotes.Text.Length < 200)
+
+            // validate user input
+            if (!string.IsNullOrEmpty(NewNotes.Text) && 1 < NewNotes.Text.Length && NewNotes.Text.Length < 200)
             {
                 _ = DisplayAlert("Worked!", "Your note has been added", "Ok");
-                sQLiteConnection.Close();
+
+                // insert a note into the database
+                NotesLogic.InsertLeagueNote(note);
+
+                // Update what's shown inside the frontend
                 My_Noteslist.ItemsSource = NotesLogic.GetAllNotes();
                 RaceTitle.IsVisible = false;
                 Add_Race_Note.IsVisible = false;
@@ -86,9 +86,9 @@ namespace Fantasy_Biking
             }
             else
             {
+                // vibrate and return an error to the user if something is not correct
                 Vibration.Vibrate();
-                _ = DisplayAlert("To Short", "try to make your note a little longer", "Ok");
-                sQLiteConnection.Close();
+                _ = DisplayAlert("Incorrect Length", "Try to make your note between 1 and 200 characters.", "Ok");
             }
         }
 
@@ -102,12 +102,7 @@ namespace Fantasy_Biking
             bool result = await DisplayAlert("Delete Note!", "You are about to delete a Note are you sure?", "Yes", "No");
             if (result)
             {
-                using (SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation))
-                {
-                    sQLiteConnection.CreateTable<BikerNote>();
-                    sQLiteConnection.CreateTable<LeagueNote>();
-                    deletedRows = sQLiteConnection.Delete(SelectedNote);
-                }
+                deletedRows = NotesLogic.DeleteNote(SelectedNote);
                 if (deletedRows > 0)
                 {
                     _ = DisplayAlert("Deleted", "Your Note has been Deleted", "Ok");
@@ -120,12 +115,9 @@ namespace Fantasy_Biking
                 else
                 {
                     _ = DisplayAlert("Not Deleted", "Your Note has not been Deleted", "Ok");
-
                 }
-                using (SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation))
-                {
-                    My_Noteslist.ItemsSource = NotesLogic.GetAllNotes();
-                }
+                
+                My_Noteslist.ItemsSource = NotesLogic.GetAllNotes();
             }
         }
 
@@ -244,9 +236,7 @@ namespace Fantasy_Biking
             {
                 var Current_biker = My_Noteslist.SelectedItem as BikerNote;
                 Current_biker.Notitie = EditNotes.Text;
-                SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation);
-                sQLiteConnection.CreateTable<BikerNote>();
-                sQLiteConnection.Update(Current_biker);
+                NotesLogic.UpdateBikerNote(Current_biker);
                 Note_info.Text = Current_biker.Notitie;
                 Note_info.IsVisible = true;
                 EditNotesFrame.IsVisible = false;
@@ -258,9 +248,7 @@ namespace Fantasy_Biking
             {
                 var Current_Race = My_Noteslist.SelectedItem as LeagueNote;
                 Current_Race.Notitie = EditNotes.Text;
-                SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation);
-                sQLiteConnection.CreateTable<LeagueNote>();
-                sQLiteConnection.Update(Current_Race);
+                NotesLogic.UpdateLeagueNote(Current_Race);
                 Note_info.Text = Current_Race.Notitie;
                 Note_info.IsVisible = true;
                 EditNotesFrame.IsVisible = false;

@@ -6,35 +6,102 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label
-                x:Name="Current_Team"
-                Padding="0,25,0,0"
-                Text="Current Team"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
-                FontSize="Title"
-                FontAttributes="Bold"
-                TextColor="Black"/>
+                <Label x:Name="Current_Team"
+                       Padding="0,25,0,0"
+                       Text="Current Team"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       TextColor="Black"/>
                 <StackLayout Padding="25,0,25,25" HeightRequest="200">
                     <ListView HeightRequest="200" 
-                    x:Name="My_Cyclists"
-                        BackgroundColor="AliceBlue">
+                              x:Name="My_Cyclists"
+                              BackgroundColor="AliceBlue"
+                              ItemSelected="My_Cyclists_ItemSelected">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <TextCell Text="{Binding Name}"
-                                      TextColor="Black"/>
+                                          TextColor="Black"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
+                <Label x:Name="Name_Current_Player"
+                       Text="{Binding Name}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="Medium"
+                       TextColor="Black"
+                       FontAttributes="Bold"/>
+                <Label x:Name="Info_current_player"
+                       Text="{Binding Notitie}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <Grid x:Name="Player_Info"
+                      IsVisible="false">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Position"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Grid.Column="0"
+                           Grid.Row="0"/>
+                    <Label x:Name="Current_cyclist_position"
+                           Text="{Binding Position}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="Medium"
+                           TextColor="Black"
+                           Grid.Column="0"
+                           Grid.Row="1"/>
+                    <Label Text="Flag"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="Medium"
+                           FontAttributes="Bold"
+                           TextColor="Black"
+                           Grid.Column="1"
+                           Grid.Row="0"/>
+                    <Image x:Name="Current_cyclis_Flag"
+                           Source="{Binding CountryFlag}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Aspect="AspectFill"
+                           HeightRequest="50"
+                           WidthRequest="75"
+                           Grid.Column="1"
+                           Grid.Row="1"/>
+
+                </Grid>
+                <Button x:Name="Delete_button_myTeam"
+                        Text="Delete"
+                        Margin="25,0,25,25"
+                        IsVisible="false"
+                        Clicked="Delete_button_myTeam_Clicked"/>
                 <Label Text="Reserve"
                        HorizontalOptions="Center"
                        FontSize="Medium"
-                       TextColor="Black"/>
+                       TextColor="Black"
+                       FontAttributes="Bold"/>
                 <StackLayout Padding="25,0,25,25" HeightRequest="100">
                     <ListView HeightRequest="200" 
-                    x:Name="Reserve_Cyclists"
-                        BackgroundColor="AliceBlue">
+                              x:Name="Reserve_Cyclists"
+                              BackgroundColor="AliceBlue"
+                              ItemSelected="Reserve_Cyclists_ItemSelected">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <TextCell Text="{Binding Name}"
@@ -43,6 +110,15 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
+                <Label x:Name="Name_Current_reserve"
+                       Text="{Binding Name}"/>
+                <Label x:Name="Info_current_reserve"
+                       Text="{Binding Notitie}"/>
+                <Button x:Name="Delete_button_myResreve"
+                        Text="Delete"
+                        Margin="25,0,25,25"
+                        IsVisible="false"
+                        Clicked="Delete_button_myResreve_Clicked"/>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*" />
@@ -52,63 +128,47 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
+                    <Label Text="Points total"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="Black"
+                           FontSize="Title"
+                          FontAttributes="Bold"/>
+                    <Label Grid.Column="1"
+                           Text="Points left"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="Black"
+                           FontSize="Title"
+                           FontAttributes="Bold"/>
                     <Label
-                    Text="Points total"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    TextColor="Black"
-                    FontSize="Title"
-                    FontAttributes="Bold"/>
-                    <Label
-                    Grid.Column="1"
-                    Text="Points left"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    TextColor="Black"
-                    FontSize="Title"
-                    FontAttributes="Bold"/>
-                    <Label
-                    x:Name="TotalPointsInTeam"
-                    Grid.Row="1"
-                    Text="0"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    TextColor="Black"
-                    FontSize="Title"/>
-                    <Label
-                    x:Name="BudgetLeft"
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Text="0"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    TextColor="Black"
-                    FontSize="Title"/>
+                        x:Name="TotalPointsInTeam"
+                        Grid.Row="1"
+                        Text="0"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        TextColor="Black"
+                        FontSize="Title"/>
+                    <Label x:Name="BudgetLeft"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Text="0"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="Black"
+                           FontSize="Title"/>
                 </Grid>
-                <Label
-                Text="Next Race"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                TextColor="Black"
-                FontSize="Title"
-                FontAttributes="Bold"/>
-                <Image
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                x:Name="Race_Statistics"
-                Source="Placeholder.png"
-                WidthRequest="300"/>
-                <Label
-                Text="Swap Cyclists"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                TextColor="Black"
-                FontSize="Title"
-                FontAttributes="Bold"/>
-                <StackLayout Padding="25,0,25,25" HeightRequest="200">
+                <Label Text="Swap Cyclists"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="Black"
+                       FontSize="Title"
+                       FontAttributes="Bold"/>
+                <StackLayout Padding="25,0,25,25"
+                             HeightRequest="200">
                     <ListView HeightRequest="100" 
-                    x:Name="Swap_Cyclists"
-                        BackgroundColor="AliceBlue">
+                              x:Name="Swap_Cyclists"
+                              BackgroundColor="AliceBlue">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <TextCell Text="{Binding Name}"
@@ -117,18 +177,33 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-                <Button
-                    x:Name="Add_to_team"
-                    Text="Add Player to Team"
-                    Margin="25,0,25,25"
-                    IsVisible="True"
-                    Clicked="Add_to_team_Clicked"/>
-                <Button
-                    x:Name="Add_player_to_Reserve"
-                    Text="Add player to Reserve"
-                    Margin="25,0,25,25"
-                    IsVisible="True"
-                    Clicked="Add_player_to_Reserve_Clicked"/>
+                <Button x:Name="Add_to_team"
+                        Text="Add Player to Team"
+                        Margin="25,0,25,25"
+                        IsVisible="True"
+                        Clicked="Add_to_team_Clicked"/>
+                <Button x:Name="Add_player_to_Reserve"
+                        Text="Add player to Reserve"
+                        Margin="25,0,25,25"
+                        IsVisible="True"
+                        Clicked="Add_player_to_Reserve_Clicked"/>
+                <Label Text="Next Race"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="Black"
+                       FontSize="Title"
+                       FontAttributes="Bold"/>
+                <Image HorizontalOptions="Center"
+                      VerticalOptions="Center"
+                       x:Name="Race_Statistics"
+                       Source="Placeholder.png"
+                       WidthRequest="300"/>
+                <Label x:Name="Race_info"
+                       Text="{Binding Miles}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="Black"/>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

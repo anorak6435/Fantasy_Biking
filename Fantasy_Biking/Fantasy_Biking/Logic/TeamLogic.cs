@@ -140,6 +140,44 @@ namespace Fantasy_Biking.Logic
             }
             return myreserve;
         }
+        public static int DeleteTeamcyclist(Biker bikerinteam)
+        {
+            int deletedRows;
+            using (SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation))
+            {
+                sQLiteConnection.CreateTable<Team>();
+                sQLiteConnection.CreateTable<BikerInTeam>();
+                List<Team> teams = sQLiteConnection.Table<Team>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
+                var currentTeam = new BikerInTeam
+                {
+                    TeamId = teams[0].Id,
+                    BikerId = bikerinteam.Id
+
+                };
+                List<BikerInTeam> bit = sQLiteConnection.Table<BikerInTeam>().Where(x => currentTeam.TeamId == x.TeamId && currentTeam.BikerId == x.BikerId).ToList();
+                deletedRows = sQLiteConnection.Delete(bit[0]);
+            }
+            return deletedRows;
+        }
+        public static int DeleteReservecyclist(Biker bikerinteam)
+        {
+            int deletedRows;
+            using (SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation))
+            {
+                sQLiteConnection.CreateTable<Reserve>();
+                sQLiteConnection.CreateTable<Reserve_Biker>();
+                List<Reserve> teams = sQLiteConnection.Table<Reserve>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
+                var currentTeam = new Reserve_Biker
+                {
+                    TeamId = teams[0].Id,
+                    BikerId = bikerinteam.Id
+
+                };
+                List<Reserve_Biker> bit = sQLiteConnection.Table<Reserve_Biker>().Where(x => currentTeam.TeamId == x.TeamId && currentTeam.BikerId == x.BikerId).ToList();
+                deletedRows = sQLiteConnection.Delete(bit[0]);
+            }
+            return deletedRows;
+        }
 
         public static int GetMyTeamBudget()
         {

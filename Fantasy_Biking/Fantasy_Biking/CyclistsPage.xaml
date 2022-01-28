@@ -100,7 +100,8 @@
                 <StackLayout Padding="25,0,25,25" HeightRequest="100">
                     <ListView HeightRequest="200" 
                               x:Name="Reserve_Cyclists"
-                              BackgroundColor="AliceBlue">
+                              BackgroundColor="AliceBlue"
+                              ItemSelected="Reserve_Cyclists_ItemSelected">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <TextCell Text="{Binding Name}"
@@ -116,7 +117,7 @@
                 <Button x:Name="Delete_button_myResreve"
                         Text="Delete"
                         Margin="25,0,25,25"
-                        IsVisible="True"
+                        IsVisible="false"
                         Clicked="Delete_button_myResreve_Clicked"/>
                 <Grid>
                     <Grid.RowDefinitions>

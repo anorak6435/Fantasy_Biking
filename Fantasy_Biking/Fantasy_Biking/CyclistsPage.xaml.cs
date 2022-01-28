@@ -87,6 +87,7 @@ namespace Fantasy_Biking
             TeamLogic.AddBikerToReserve(Swap_Cyclists.SelectedItem as Biker);
             List<Biker> MyTeam = TeamLogic.GetMyReserve();
             Reserve_Cyclists.ItemsSource = MyTeam;
+
         }
 
         private void My_Cyclists_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -120,6 +121,8 @@ namespace Fantasy_Biking
 
             var currentbiker = My_Cyclists.SelectedItem as Biker;
             TeamLogic.DeleteTeamcyclist(currentbiker);
+            Delete_button_myTeam.IsVisible = false;
+            Player_Info.IsVisible = false;
             Display_My_Team();
         }
 
@@ -127,7 +130,13 @@ namespace Fantasy_Biking
         {
             var currentbiker = Reserve_Cyclists.SelectedItem as Biker;
             TeamLogic.DeleteReservecyclist(currentbiker);
+            Delete_button_myResreve.IsVisible = false;
             Display_My_Reserve();
+        }
+
+        private void Reserve_Cyclists_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Delete_button_myResreve.IsVisible = true;
         }
     }
 }

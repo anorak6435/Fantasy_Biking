@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fantasy_Biking.CyclistsPage"
+             Title="Cyclists">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label
+                x:Name="Current_Team"
+                Padding="0,25,0,0"
+                Text="Current Team"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontSize="Title"
+                FontAttributes="Bold"
+                TextColor="Black"/>
+                <StackLayout Padding="25,0,25,25" HeightRequest="200">
+                    <ListView HeightRequest="200" 
+                    x:Name="My_Cyclists"
+                        BackgroundColor="AliceBlue">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding Name}"
+                                      TextColor="Black"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <Label Text="Reserve"
+                       HorizontalOptions="Center"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <StackLayout Padding="25,0,25,25" HeightRequest="100">
+                    <ListView HeightRequest="200" 
+                    x:Name="Reserve_Cyclists"
+                        BackgroundColor="AliceBlue">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding Name}"
+                                      TextColor="Black"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                    Text="Points total"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    TextColor="Black"
+                    FontSize="Title"
+                    FontAttributes="Bold"/>
+                    <Label
+                    Grid.Column="1"
+                    Text="Points left"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    TextColor="Black"
+                    FontSize="Title"
+                    FontAttributes="Bold"/>
+                    <Label
+                    x:Name="TotalPointsInTeam"
+                    Grid.Row="1"
+                    Text="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    TextColor="Black"
+                    FontSize="Title"/>
+                    <Label
+                    x:Name="BudgetLeft"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    TextColor="Black"
+                    FontSize="Title"/>
+                </Grid>
+                <Label
+                Text="Next Race"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                TextColor="Black"
+                FontSize="Title"
+                FontAttributes="Bold"/>
+                <Image
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                x:Name="Race_Statistics"
+                Source="Placeholder.png"
+                WidthRequest="300"/>
+                <Label
+                Text="Swap Cyclists"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                TextColor="Black"
+                FontSize="Title"
+                FontAttributes="Bold"/>
+                <StackLayout Padding="25,0,25,25" HeightRequest="200">
+                    <ListView HeightRequest="100" 
+                    x:Name="Swap_Cyclists"
+                        BackgroundColor="AliceBlue">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding Name}"
+                                          TextColor="Black"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <Button
+                    x:Name="Add_to_team"
+                    Text="Add Player to Team"
+                    Margin="25,0,25,25"
+                    IsVisible="True"
+                    Clicked="Add_to_team_Clicked"/>
+                <Button
+                    x:Name="Add_player_to_Reserve"
+                    Text="Add player to Reserve"
+                    Margin="25,0,25,25"
+                    IsVisible="True"
+                    Clicked="Add_player_to_Reserve_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

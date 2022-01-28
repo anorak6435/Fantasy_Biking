@@ -33,6 +33,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,6 +58,9 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
@@ -87,13 +94,13 @@
     <AndroidResource Include="Resources\drawable\Fantasy_Biking_Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fantasy_Biking\Fantasy_Biking.csproj">
-      <Project>{DE7939D1-03AC-401D-912D-1480D4DC0845}</Project>
-      <Name>Fantasy_Biking</Name>
-    </ProjectReference>
+    <AndroidResource Include="Resources\drawable\Placeholder.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Placeholder.png" />
+    <ProjectReference Include="..\Fantasy_Biking\Fantasy_Biking.csproj">
+      <Project>{32b143f2-e761-4b89-8c49-14b2d25713cb}</Project>
+      <Name>Fantasy_Biking</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

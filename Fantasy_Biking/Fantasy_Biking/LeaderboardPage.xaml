@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fantasy_Biking.LeaderboardPage"
+             Title="Leaderboard">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label
+                x:Name="Current_Team"
+                Padding="0,25,0,0"
+                Text="Today"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                FontSize="Title"
+                FontAttributes="Bold"
+                TextColor="Black"/>
+                <StackLayout Padding="25,0,25,25" HeightRequest="200">
+                    <ListView HeightRequest="200" 
+                    x:Name="My_Cyclists"
+                        BackgroundColor="AliceBlue">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell TextColor="Black"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <Label
+                Text="Overall Leader "
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                TextColor="Black"
+                FontSize="Title"
+                FontAttributes="Bold"/>
+                <StackLayout Padding="25,0,25,25" HeightRequest="200">
+                    <ListView HeightRequest="100" 
+                    x:Name="Swap_Cyclists"
+                        BackgroundColor="AliceBlue">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell TextColor="Black"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

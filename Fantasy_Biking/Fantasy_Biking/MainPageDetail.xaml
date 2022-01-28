@@ -2,6 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fantasy_Biking.MainPageDetail">
+    <NavigationPage.TitleView>
+        <Grid BackgroundColor="{StaticResource ButtonPrimary}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Padding="0,0,20,0"  Grid.Row="1" Grid.Column="2">
+                <Frame HorizontalOptions="End" CornerRadius="100" IsClippedToBounds="True" Padding="0,0,0,0" WidthRequest="30" HeightRequest="30">
+                    <ImageButton x:Name="UserPic" Source="profilepic" HorizontalOptions="FillAndExpand" Aspect="AspectFill" WidthRequest="800" HeightRequest="10" Clicked="UserPic_Clicked"/>
+                </Frame>
+            </StackLayout>
+            <Label Margin="0,0,0,0" x:Name="UsernameLabel" Grid.Row="1" Grid.Column="1" Text="{Binding Name}" VerticalTextAlignment="Center" HorizontalTextAlignment="End" FontAttributes="Bold"/>
+        </Grid>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout>
             <Label
@@ -30,14 +48,19 @@
                 HorizontalOptions="Center"
                 FontSize="Title"
                 FontAttributes="Bold"
-                TextColor="Black"/>
+                TextColor="Black">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="MyTeam_navigation"/>
+                </Label.GestureRecognizers>
+            </Label>
             <StackLayout Padding="25,0,25,25" HeightRequest="150">
                 <ListView
                     x:Name="MyTeam_List"
                         BackgroundColor="AliceBlue">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell/>
+                            <TextCell Text="{Binding Name}"
+                                      TextColor="Black"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -45,12 +68,16 @@
             <Label
                 x:Name="NextRace_Title"
                 Padding="0,0,0,0"
-                Text="Next race name"
+                Text="{Binding strLeague}"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 FontSize="Title"
                 FontAttributes="Bold"
-                TextColor="Black"/>
+                TextColor="Black">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="MyRace_navigation"/>
+                </Label.GestureRecognizers>
+            </Label>
             <Image x:Name="NextRace_Statistics" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="100"
                    Source="Placeholder.png"/>
             <Label
@@ -65,7 +92,7 @@
             <Label
                 x:Name="NextRace_Info"
                 Padding="40,0,40,0"
-                Text="Lorem Ipsum Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                Text="{Binding Miles}"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"

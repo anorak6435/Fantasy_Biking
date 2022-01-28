@@ -20,7 +20,7 @@
                    Placeholder="Username" />
             <Entry x:Name="Entry_Password"
                    Placeholder="Password"
-                   IsPassword="True" />
+                   IsPassword="True"/>
             <Button  Margin="50,0,50,0" Text="Login" FontAttributes="Bold"
                     Clicked="CheckInformation"/>
             <Label Text="Forgot Password"

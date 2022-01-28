@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fantasy_Biking.Logic;
+using Fantasy_Biking.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,13 @@ namespace Fantasy_Biking
         public RacesPage()
         {
             InitializeComponent();
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            List<League> leagues = await RaceLogic.GetAllLeagues();
+            Race_List.ItemsSource = leagues;
         }
     }
 }

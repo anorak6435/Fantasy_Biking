@@ -3,6 +3,7 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Fantasy_Biking.Logic
 {
@@ -33,7 +34,7 @@ namespace Fantasy_Biking.Logic
             return (usrs[0], string.Empty);
         }
 
-        public static (bool, string) Register(string userName, string password, string passwordRepeat)
+        public static (bool, string) Register(string userName, string password, string passwordRepeat, string imageSrc)
         {
             // check the incoming data is valid
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(passwordRepeat))
@@ -48,6 +49,7 @@ namespace Fantasy_Biking.Logic
             User usr = new User();
             usr.Name = userName;
             usr.Password = password;
+            usr.ProfileImageSrc = imageSrc;
 
             // track how many rows were inserted
             int ins_rows;

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace Fantasy_Biking
 {
@@ -28,14 +29,11 @@ namespace Fantasy_Biking
         }
         private async void Register_Account(object sender, EventArgs e)
         {
-
-            {
-                await Navigation.PushAsync(new RegisterPage());
-            }
+            await Navigation.PushAsync(new RegisterPage());
         }
         async private void Reset_Password(object sender, EventArgs e)
         {
-            bool IsusernameEmpty = string.IsNullOrEmpty(Entry_Username.Text);
+            /*bool IsusernameEmpty = string.IsNullOrEmpty(Entry_Username.Text);
             bool IsuserPasswordEmpty = string.IsNullOrEmpty(Entry_Password.Text);
 
 
@@ -46,7 +44,7 @@ namespace Fantasy_Biking
             else
             {
                 await Navigation.PushAsync(new MainPage());
-            }
+            }*/
         }
         async private void CheckInformation(object sender, EventArgs e)
         {
@@ -54,11 +52,21 @@ namespace Fantasy_Biking
 
             if (usr == null)
             {
-                await DisplayAlert("Waarschuwing!", msgErr, "cancel");
+                Vibration.Vibrate();
+                await DisplayAlert("Warning!", msgErr, "cancel");
             } else
             {
+                var current = Connectivity.NetworkAccess;
+                if (current != NetworkAccess.Internet)
+                {
+                    //makes device vibrate when no internet connection
+                    Vibration.Vibrate();
+                    //there is no connection with the internet
+                    await DisplayAlert("No Connection",
+                        "it appears there is no connection. some value's might not be up to date", "proceed!");
+                }
                 // We found a user
-                await Navigation.PushAsync(new MainPage());
+                await Navigation.PushAsync(new MainPage(usr));
             }
 
             /*bool IsusernameEmpty = string.IsNullOrEmpty(Entry_Username.Text);

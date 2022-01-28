@@ -11,7 +11,8 @@
                         BackgroundColor="AliceBlue">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell/>
+                            <TextCell Text="{Binding strLeague}"
+                                      TextColor="Black"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -36,7 +37,7 @@
                 HorizontalTextAlignment="Center"
                 TextColor="Black"/>
             <Image
-                x:Name="Race_Statistics"
+                x:Name="RaceStatistics"
                 Source="Placeholder.png"
                 WidthRequest="300"/>
 

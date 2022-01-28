@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fantasy_Biking.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,12 +25,17 @@ namespace Fantasy_Biking
 
         private async void Cyclists_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RacesPage());
+            await Navigation.PushAsync(new CyclistsPage());
         }
 
         private async void Leaderboard_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RacesPage());
+            await Navigation.PushAsync(new LeaderboardPage());
+        }
+
+        private async void Notes_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NotitiePage());
         }
     }
 }

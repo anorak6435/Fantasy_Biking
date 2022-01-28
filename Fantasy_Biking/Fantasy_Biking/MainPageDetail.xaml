@@ -65,11 +65,14 @@
                    HorizontalOptions="Center"
                    FontSize="Title"
                    FontAttributes="Bold"
-                   TextColor="Black">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="MyTeam_navigation"/>
-                </Label.GestureRecognizers>
-            </Label>
+                   TextColor="Black"/>
+            <Button x:Name="MyTeamnavigation"
+                    Text="Go to My Team"
+                    FontAttributes="Italic"
+                    FontSize="Caption"
+                    Margin="110,0,110,0"
+                    HeightRequest="40"
+                    Clicked="MyTeam_navigation"/>
             <StackLayout Padding="25,0,25,25" HeightRequest="150">
                 <ListView
                     x:Name="MyTeam_List"
@@ -147,12 +150,15 @@
                    HorizontalOptions="Center"
                    FontSize="Title"
                    FontAttributes="Bold"
-                   TextColor="Black">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="MyRace_navigation"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <Label
+                   TextColor="Black"/>
+            <Button x:Name="MyRacenavigation"
+                    Text="Go to My Team"
+                    FontAttributes="Italic"
+                    FontSize="Caption"
+                    Margin="110,0,110,0"
+                    HeightRequest="40"
+                    Clicked="MyRace_navigation"/>
+                <Label
                 x:Name="NextRace_Info_Title"
                 Padding="0,0,0,0"
                 Text="Race Info"

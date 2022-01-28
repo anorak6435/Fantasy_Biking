@@ -41,8 +41,9 @@
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout>
-            <Label x:Name="Points_Title"
+        <ScrollView>
+            <StackLayout>
+                <Label x:Name="Points_Title"
                    Padding="0,30,0,0"
                    Text="Points Total"
                    HorizontalOptions="CenterAndExpand"
@@ -50,7 +51,7 @@
                    HorizontalTextAlignment="Center"
                    FontAttributes="Bold"
                    TextColor="Black"/>
-            <Label x:Name="Points"
+                <Label x:Name="Points"
                    Padding="40,0,40,25"
                    Text="10023"
                    VerticalOptions="Center" 
@@ -58,7 +59,7 @@
                    HorizontalTextAlignment="Center"
                    FontSize="Title"
                    TextColor="Black"/>
-            <Label x:Name="MyTeam_Title"
+                <Label x:Name="MyTeam_Title"
                    Padding="0,0,0,0"
                    Text="My Team"
                    VerticalOptions="Center" 
@@ -66,50 +67,50 @@
                    FontSize="Title"
                    FontAttributes="Bold"
                    TextColor="Black"/>
-            <Button x:Name="MyTeamnavigation"
+                <Button x:Name="MyTeamnavigation"
                     Text="Go to My Team"
                     FontAttributes="Italic"
                     FontSize="Caption"
                     Margin="110,0,110,0"
                     HeightRequest="40"
                     Clicked="MyTeam_navigation"/>
-            <StackLayout Padding="25,0,25,25" HeightRequest="150">
-                <ListView
+                <StackLayout Padding="25,0,25,25" HeightRequest="150">
+                    <ListView
                     x:Name="MyTeam_List"
                     BackgroundColor="AliceBlue"
                     ItemSelected="MyTeam_List_ItemSelected">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding Name}"
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding Name}"
                                       TextColor="Black"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-            <Label x:Name="Name_Current_Player"
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <Label x:Name="Name_Current_Player"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
                    FontSize="Medium"
                    FontAttributes="Bold"
                    TextColor="Black"/>
-            <Label x:Name="Info_current_player"
+                <Label x:Name="Info_current_player"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
                    FontAttributes="Bold"
                    TextColor="Black"/>
-            <Grid x:Name="Player_Info"
+                <Grid x:Name="Player_Info"
                       IsVisible="false">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
-                <Label Text="Position"
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Position"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontSize="Medium"
@@ -117,7 +118,7 @@
                        TextColor="Black"
                        Grid.Column="0"
                        Grid.Row="0"/>
-                <Label x:Name="Current_cyclist_position"
+                    <Label x:Name="Current_cyclist_position"
                        Text="{Binding Position}"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
@@ -125,7 +126,7 @@
                        TextColor="Black"
                        Grid.Column="0"
                        Grid.Row="1"/>
-                <Label Text="Flag"
+                    <Label Text="Flag"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        FontSize="Medium"
@@ -133,7 +134,7 @@
                        TextColor="Black"
                        Grid.Column="1"
                        Grid.Row="0"/>
-                <Image x:Name="Current_cyclis_Flag"
+                    <Image x:Name="Current_cyclis_Flag"
                        Source="{Binding CountryFlag}"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
@@ -142,8 +143,8 @@
                        WidthRequest="75"
                        Grid.Column="1"
                        Grid.Row="1"/>
-            </Grid>
-            <Label x:Name="NextRace_Title"
+                </Grid>
+                <Label x:Name="NextRace_Title"
                    Padding="0,0,0,0"
                    Text="{Binding strLeague}"
                    VerticalOptions="Center" 
@@ -151,7 +152,7 @@
                    FontSize="Title"
                    FontAttributes="Bold"
                    TextColor="Black"/>
-            <Button x:Name="MyRacenavigation"
+                <Button x:Name="MyRacenavigation"
                     Text="Go to Races"
                     FontAttributes="Italic"
                     FontSize="Caption"
@@ -167,14 +168,21 @@
                 FontSize="Medium"
                 FontAttributes="Bold"
                 TextColor="Black"/>
-            <Label
+                <Label
                 x:Name="NextRace_Info"
-                Padding="40,0,40,0"
+                Padding="40,0,40,40"
                 Text="{Binding Miles}"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 TextColor="Black"/>
-        </StackLayout>
+            <StackLayout Padding="0,0,0,25">
+            <Button Text="Logout"
+                        x:Name="Logout_button"
+                        Clicked="Logout_button_Clicked"
+                        Margin="50,0,50,0"/>
+            </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

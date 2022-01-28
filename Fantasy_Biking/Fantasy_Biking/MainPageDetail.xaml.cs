@@ -74,5 +74,10 @@ namespace Fantasy_Biking
                 Player_Info.IsVisible = true;
             }
         }
+
+        private async void Logout_button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Loginpage());
+        }
     }
 }

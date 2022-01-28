@@ -62,5 +62,13 @@ namespace Fantasy_Biking.Logic
             List<object> notes = bikernotes.Cast<object>().Concat(leaguesnotes).ToList();
             return notes;
         }
+        public static List<BikerNote> GetAllBikerNotes()
+        {
+            SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation);
+
+            var bikernotes = sQLiteConnection.Table<BikerNote>().ToList();
+            List<BikerNote> notes = bikernotes.Cast<BikerNote>().ToList();
+            return notes;
+        }
     }
 }

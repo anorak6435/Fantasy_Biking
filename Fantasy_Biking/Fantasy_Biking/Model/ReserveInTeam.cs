@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Fantasy_Biking.Model
 {
-    public class Reserve_Biker
+    public class ReserveInTeam
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

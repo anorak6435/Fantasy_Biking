@@ -39,7 +39,7 @@ namespace Fantasy_Biking
         {
             // get sum of cost in my team
             int costSum = 0;
-            foreach (Biker bik in TeamLogic.GetMyTeam())
+            foreach (Biker bik in TeamLogic.GetMyTeamBikers())
             {
                 costSum += bik.Cost;
             }
@@ -55,7 +55,7 @@ namespace Fantasy_Biking
         private void Display_My_Team()
         {
             // load bikers on my team
-            List<Biker> MyTeam = TeamLogic.GetMyTeam();
+            List<Biker> MyTeam = TeamLogic.GetMyTeamBikers();
             My_Cyclists.ItemsSource = MyTeam;
         }
 
@@ -71,16 +71,18 @@ namespace Fantasy_Biking
             if (Swap_Cyclists.SelectedItem == null)
             {
                DisplayAlert("Canceling!", "please select a cyclist to add!", "cancel");
+            } else
+            {
+                // there is an item selected
+                TeamLogic.AddBikerToTeam(Swap_Cyclists.SelectedItem as Biker);
+
+                // reload bikers on my team
+                List<Biker> MyTeam = TeamLogic.GetMyTeamBikers();
+                My_Cyclists.ItemsSource = MyTeam;
+
+                // reload the total cost of my team
+                Display_Team_Total_Cost();
             }
-            // there is an item selected
-            TeamLogic.AddBikerToTeam(Swap_Cyclists.SelectedItem as Biker);
-
-            // reload bikers on my team
-            List<Biker> MyTeam = TeamLogic.GetMyTeam();
-            My_Cyclists.ItemsSource = MyTeam;
-
-            // reload the total cost of my team
-            Display_Team_Total_Cost();
         }
 
         private void Add_player_to_Reserve_Clicked(object sender, EventArgs e)
@@ -130,6 +132,9 @@ namespace Fantasy_Biking
             Delete_button_myTeam.IsVisible = false;
             Player_Info.IsVisible = false;
             Display_My_Team();
+
+            // reload the total cost of my team
+            Display_Team_Total_Cost();
         }
 
         private void Delete_button_myResreve_Clicked(object sender, EventArgs e)
@@ -138,6 +143,9 @@ namespace Fantasy_Biking
             TeamLogic.DeleteReservecyclist(currentbiker);
             Delete_button_myResreve.IsVisible = false;
             Display_My_Reserve();
+
+            // reload the total cost of my team
+            Display_Team_Total_Cost();
         }
 
         private void Reserve_Cyclists_ItemSelected(object sender, SelectedItemChangedEventArgs e)

@@ -152,7 +152,7 @@
                    FontAttributes="Bold"
                    TextColor="Black"/>
             <Button x:Name="MyRacenavigation"
-                    Text="Go to My Team"
+                    Text="Go to Races"
                     FontAttributes="Italic"
                     FontSize="Caption"
                     Margin="110,0,110,0"

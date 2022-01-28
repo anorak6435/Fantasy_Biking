@@ -1,4 +1,5 @@
 ﻿using Fantasy_Biking.Logic;
+using Fantasy_Biking.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,30 @@ namespace Fantasy_Biking
         private async void MyRace_navigation(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RacesPage());
+        }
+
+        private void MyTeam_List_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+
+            var allbikernotes = NotesLogic.GetAllBikerNotes();
+            var currentbiker = MyTeam_List.SelectedItem as Biker;
+            var matchesBiker = allbikernotes.Where(x => x.Biker_Id == currentbiker.Id).ToList();
+            if (matchesBiker.Count == 0)
+            {
+                Name_Current_Player.Text = currentbiker.Name;
+                Current_cyclis_Flag.Source = currentbiker.CountryFlag;
+                Current_cyclist_position.Text = currentbiker.Position.ToString();
+                Info_current_player.Text = "";
+                Player_Info.IsVisible = true;
+            }
+            else
+            {
+                Name_Current_Player.Text = currentbiker.Name;
+                Current_cyclis_Flag.Source = currentbiker.CountryFlag;
+                Current_cyclist_position.Text = currentbiker.Position.ToString();
+                Info_current_player.Text = matchesBiker[0].Notitie;
+                Player_Info.IsVisible = true;
+            }
         }
     }
 }

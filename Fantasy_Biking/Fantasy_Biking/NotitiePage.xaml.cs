@@ -16,7 +16,6 @@ namespace Fantasy_Biking
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotitiePage : ContentPage
     {
-        BikerNote note;
         public NotitiePage()
         {
             InitializeComponent();

@@ -69,5 +69,17 @@ namespace Fantasy_Biking
             // reload the total cost of my team
             Display_Team_Total_Cost();
         }
+
+        private void Add_player_to_Reserve_Clicked(object sender, EventArgs e)
+        {
+            if (Swap_Cyclists.SelectedItem == null)
+            {
+                DisplayAlert("Canceling!", "please select a cyclist to add!", "cancel");
+            }
+            // there is an item selected
+            TeamLogic.AddBikerToReserve(Swap_Cyclists.SelectedItem as Biker);
+            List<Biker> MyTeam = TeamLogic.GetMyReserve();
+            Reserve_Cyclists.ItemsSource = MyTeam;
+        }
     }
 }

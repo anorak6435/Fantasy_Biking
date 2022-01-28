@@ -26,7 +26,22 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-
+                </StackLayout>
+                <Label Text="Reserve"
+                       HorizontalOptions="Center"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <StackLayout Padding="25,0,25,25" HeightRequest="100">
+                    <ListView HeightRequest="200" 
+                    x:Name="Reserve_Cyclists"
+                        BackgroundColor="AliceBlue">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding Name}"
+                                      TextColor="Black"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </StackLayout>
                 <Grid>
                     <Grid.RowDefinitions>
@@ -108,6 +123,12 @@
                     Margin="25,0,25,25"
                     IsVisible="True"
                     Clicked="Add_to_team_Clicked"/>
+                <Button
+                    x:Name="Add_player_to_Reserve"
+                    Text="Add player to Reserve"
+                    Margin="25,0,25,25"
+                    IsVisible="True"
+                    Clicked="Add_player_to_Reserve_Clicked"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

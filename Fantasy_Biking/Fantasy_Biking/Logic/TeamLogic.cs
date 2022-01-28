@@ -67,7 +67,35 @@ namespace Fantasy_Biking.Logic
                 }
             }
         }
+        public static void AddBikerToReserve(Biker biker)
+        {
+            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+            {
+                con.CreateTable<Reserve>();
+                con.CreateTable<Reserve_Biker>();
 
+                List<Reserve> reserve = con.Table<Reserve>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
+                if (reserve.Count == 1)
+                {
+                    int teamID = reserve[0].Id;
+                    List<Reserve_Biker> reserve_biker = con.Table<Reserve_Biker>().Where(x => x.BikerId == biker.Id && x.TeamId == teamID).ToList();
+                    if (reserve_biker.Count == 0)
+                    {
+                        con.Insert(new Reserve_Biker { BikerId = biker.Id, TeamId = reserve[0].Id });
+                    }
+                }
+                else
+                {   // The user has no team
+                    Reserve newreserve = new Reserve
+                    {
+                        UserId = MainPage.loggedInUser.Id,
+                    };
+                    con.Insert(newreserve);
+
+                    con.Insert(new Reserve_Biker { BikerId = biker.Id, TeamId = newreserve.Id });
+                }
+            }
+        }
         public static List<Biker> GetMyTeam()
         {
             List<Biker> myTeam = new List<Biker>();
@@ -88,6 +116,29 @@ namespace Fantasy_Biking.Logic
                 }
             }
             return myTeam;
+        }
+
+        public static List<Biker> GetMyReserve()
+        {
+            List<Biker> myreserve = new List<Biker>();
+            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+            {
+                con.CreateTable<Reserve>();
+                con.CreateTable<Reserve_Biker>();
+                // what is my teamID
+                List<Reserve> reserve = con.Table<Reserve>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
+                if (reserve.Count > 0)
+                {   // User has a team // get bikerIDs from bikers in team
+                    int expectedTeamId = reserve[0].Id;
+                    List<Reserve_Biker> bikerIds = con.Table<Reserve_Biker>().Where(x => x.TeamId == expectedTeamId).ToList();
+                    foreach (Reserve_Biker idItems in bikerIds)
+                    {
+                        List<Biker> bik = BikerLogic.AllBikers().Where(x => x.Id == idItems.BikerId).ToList();
+                        myreserve.Add(bik[0]);
+                    }
+                }
+            }
+            return myreserve;
         }
 
         public static int GetMyTeamBudget()

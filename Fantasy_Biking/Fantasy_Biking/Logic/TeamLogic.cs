@@ -72,16 +72,30 @@ namespace Fantasy_Biking.Logic
             using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
             {
                 con.CreateTable<Reserve>();
-                con.CreateTable<Reserve_Biker>();
+                con.CreateTable<ReserveInTeam>();
 
                 List<Reserve> reserve = con.Table<Reserve>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
                 if (reserve.Count == 1)
                 {
-                    int teamID = reserve[0].Id;
-                    List<Reserve_Biker> reserve_biker = con.Table<Reserve_Biker>().Where(x => x.BikerId == biker.Id && x.TeamId == teamID).ToList();
-                    if (reserve_biker.Count == 0)
+                    // check how many bikers I have
+                    if (GetMyReserveBikers().Count < 3)
                     {
-                        con.Insert(new Reserve_Biker { BikerId = biker.Id, TeamId = reserve[0].Id });
+                        // check if biker already in my reserves
+                        int teamID = reserve[0].Id;
+                        List<ReserveInTeam> reserves_team = con.Table<ReserveInTeam>().Where(x => x.BikerId == biker.Id && x.TeamId == teamID).ToList();
+                        if (reserves_team.Count == 0)
+                        {   // this biker is not in my reserves
+                            //can we affort the biker
+                            if (reserve[0].Budget >= biker.Cost)
+                            {
+                                // update reserve budget
+                                reserve[0].Budget -= biker.Cost;
+                                con.Update(reserve[0]);
+
+                                // add the reserve to the reserves
+                                con.Insert(new ReserveInTeam { BikerId = biker.Id, TeamId = reserve[0].Id });
+                            }
+                        }
                     }
                 }
                 else
@@ -89,14 +103,43 @@ namespace Fantasy_Biking.Logic
                     Reserve newreserve = new Reserve
                     {
                         UserId = MainPage.loggedInUser.Id,
+                        Budget = Constants.RESERVES_BUDGET
                     };
                     con.Insert(newreserve);
 
-                    con.Insert(new Reserve_Biker { BikerId = biker.Id, TeamId = newreserve.Id });
+                    con.Insert(new ReserveInTeam { BikerId = biker.Id, TeamId = newreserve.Id });
                 }
             }
         }
-        public static List<Biker> GetMyTeam()
+
+        /// <summary>
+        /// Get all reserve bikers from the logged in user
+        /// </summary>
+        /// <returns></returns>
+        public static List<Biker> GetMyReserveBikers()
+        {
+            List<Biker> myTeam = new List<Biker>();
+            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+            {
+                con.CreateTable<Reserve>();
+                con.CreateTable<ReserveInTeam>();
+                // what is my teamID
+                List<Reserve> teams = con.Table<Reserve>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
+                if (teams.Count > 0)
+                {   // User has a reserve team // get bikerIDs from bikers in team
+                    int expectedTeamId = teams[0].Id;
+                    List<ReserveInTeam> bikerIds = con.Table<ReserveInTeam>().Where(x => x.TeamId == expectedTeamId).ToList();
+                    foreach (ReserveInTeam idItems in bikerIds)
+                    {
+                        List<Biker> bik = BikerLogic.AllBikers().Where(x => x.Id == idItems.BikerId).ToList();
+                        myTeam.Add(bik[0]);
+                    }
+                }
+            }
+            return myTeam;
+        }
+
+        public static List<Biker> GetMyTeamBikers()
         {
             List<Biker> myTeam = new List<Biker>();
             using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
@@ -118,20 +161,37 @@ namespace Fantasy_Biking.Logic
             return myTeam;
         }
 
+        public static Team GetMyteam()
+        {
+            Team myTeam = new Team();
+            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+            {
+                con.CreateTable<Team>();
+                con.CreateTable<BikerInTeam>();
+                // what is my teamID
+                List<Team> teams = con.Table<Team>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
+                if (teams.Count > 0)
+                {   // User has a team // get bikerIDs from bikers in team
+                    myTeam = teams[0];
+                }
+            }
+            return myTeam;
+        }
+
         public static List<Biker> GetMyReserve()
         {
             List<Biker> myreserve = new List<Biker>();
             using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
             {
                 con.CreateTable<Reserve>();
-                con.CreateTable<Reserve_Biker>();
+                con.CreateTable<ReserveInTeam>();
                 // what is my teamID
                 List<Reserve> reserve = con.Table<Reserve>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
                 if (reserve.Count > 0)
                 {   // User has a team // get bikerIDs from bikers in team
                     int expectedTeamId = reserve[0].Id;
-                    List<Reserve_Biker> bikerIds = con.Table<Reserve_Biker>().Where(x => x.TeamId == expectedTeamId).ToList();
-                    foreach (Reserve_Biker idItems in bikerIds)
+                    List<ReserveInTeam> bikerIds = con.Table<ReserveInTeam>().Where(x => x.TeamId == expectedTeamId).ToList();
+                    foreach (ReserveInTeam idItems in bikerIds)
                     {
                         List<Biker> bik = BikerLogic.AllBikers().Where(x => x.Id == idItems.BikerId).ToList();
                         myreserve.Add(bik[0]);
@@ -165,15 +225,15 @@ namespace Fantasy_Biking.Logic
             using (SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation))
             {
                 sQLiteConnection.CreateTable<Reserve>();
-                sQLiteConnection.CreateTable<Reserve_Biker>();
+                sQLiteConnection.CreateTable<ReserveInTeam>();
                 List<Reserve> teams = sQLiteConnection.Table<Reserve>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
-                var currentTeam = new Reserve_Biker
+                var currentTeam = new ReserveInTeam
                 {
                     TeamId = teams[0].Id,
                     BikerId = bikerinteam.Id
 
                 };
-                List<Reserve_Biker> bit = sQLiteConnection.Table<Reserve_Biker>().Where(x => currentTeam.TeamId == x.TeamId && currentTeam.BikerId == x.BikerId).ToList();
+                List<ReserveInTeam> bit = sQLiteConnection.Table<ReserveInTeam>().Where(x => currentTeam.TeamId == x.TeamId && currentTeam.BikerId == x.BikerId).ToList();
                 deletedRows = sQLiteConnection.Delete(bit[0]);
             }
             return deletedRows;
@@ -181,7 +241,7 @@ namespace Fantasy_Biking.Logic
 
         public static int GetMyTeamBudget()
         {
-            int returnbudget = -1;
+            int returnbudget = 0;
             using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
             {
                 con.CreateTable<Team>();

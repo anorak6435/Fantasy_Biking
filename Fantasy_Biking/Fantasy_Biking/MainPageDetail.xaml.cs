@@ -21,7 +21,7 @@ namespace Fantasy_Biking
 
         protected async override void OnAppearing()
         {
-            MyTeam_List.ItemsSource = TeamLogic.GetMyTeam();
+            MyTeam_List.ItemsSource = TeamLogic.GetMyTeamBikers();
             Points.Text = Convert.ToString(TeamLogic.GetMyTotalPoints());
             UsernameLabel.Text = MainPage.loggedInUser.Name;
             var allmiles = await Mile_Logic.AllMiles();

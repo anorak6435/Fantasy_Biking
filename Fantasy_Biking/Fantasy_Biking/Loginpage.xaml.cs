@@ -57,18 +57,7 @@ namespace Fantasy_Biking
         }
         async private void Reset_Password(object sender, EventArgs e)
         {
-            /*bool IsusernameEmpty = string.IsNullOrEmpty(Entry_Username.Text);
-            bool IsuserPasswordEmpty = string.IsNullOrEmpty(Entry_Password.Text);
-
-
-            if (IsusernameEmpty || IsuserPasswordEmpty)
-            {
-                await DisplayAlert("Invalide Login", "Okay", "Cancel");
-            }
-            else
-            {
-                await Navigation.PushAsync(new MainPage());
-            }*/
+            await Navigation.PushAsync(new ResetPasswordPage());
         }
         async private void CheckInformation(object sender, EventArgs e)
         {

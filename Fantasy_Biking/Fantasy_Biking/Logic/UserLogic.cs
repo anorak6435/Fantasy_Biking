@@ -2,6 +2,7 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -70,6 +71,14 @@ namespace Fantasy_Biking.Logic
                 return (false, "Fout in de database connectie!");
             }
             return (true, "Succesvol toegevoegd!");
+        }
+        public static List<User> GetAllUsers()
+        {
+            SQLiteConnection sQLiteConnection = new SQLiteConnection(App.DatabaseLocation);
+            sQLiteConnection.CreateTable<User>();
+            var users = sQLiteConnection.Table<User>().ToList();
+            List<User> userlist = users.Cast<User>().ToList();
+            return userlist;
         }
     }
 }

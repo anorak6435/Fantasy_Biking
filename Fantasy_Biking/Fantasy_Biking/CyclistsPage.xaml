@@ -193,16 +193,18 @@
                        TextColor="Black"
                        FontSize="Title"
                        FontAttributes="Bold"/>
-                <Image HorizontalOptions="Center"
-                      VerticalOptions="Center"
-                       x:Name="Race_Statistics"
-                       Source="Placeholder.png"
-                       WidthRequest="300"/>
+                <Label Text="{Binding StrLeague}"
+                       x:Name="League_Name"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="Black"
+                       FontSize="Title"/>
                 <Label x:Name="Race_info"
                        Text="{Binding Miles}"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
-                       TextColor="Black"/>
+                       TextColor="Black"
+                       Padding="0,0,0,40"/>
 
             </StackLayout>
         </ScrollView>

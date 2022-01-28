@@ -19,7 +19,7 @@ namespace Fantasy_Biking
             InitializeComponent();
 
         }
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
 
@@ -27,6 +27,12 @@ namespace Fantasy_Biking
             this.Display_My_Team();
             this.Display_All_Bikers();
             this.Display_My_Reserve();
+            var allmiles = await Mile_Logic.AllMiles();
+            var lastRace = allmiles.Last();
+            var allleagues = await RaceLogic.GetAllLeagues();
+            var matchesleague = allleagues.Where(x => x.idLeague == lastRace.LeagueId).ToList();
+            League_Name.Text = matchesleague[0].strLeague;
+            Race_info.Text = lastRace.Miles.ToString() + "KM";
         }
         
         private void Display_Team_Total_Cost()

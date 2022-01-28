@@ -62,7 +62,7 @@ namespace Fantasy_Biking
                 Name_Current_Player.Text = currentbiker.Name;
                 Current_cyclis_Flag.Source = currentbiker.CountryFlag;
                 Current_cyclist_position.Text = currentbiker.Position.ToString();
-                Info_current_player.Text = "";
+                Info_current_player.Text = string.Empty;
                 Player_Info.IsVisible = true;
             }
             else

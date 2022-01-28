@@ -23,13 +23,36 @@ namespace Fantasy_Biking
         {
             return true;
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
+            Accelerometer.Start(SensorSpeed.Game);
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            Accelerometer.ShakeDetected -= Accelerometer_ShakeDetected;
+            Accelerometer.Stop();
+        }
+
         void Init()
         {
+
             Entry_Username.Completed += (s, e) => Entry_Password.Focus();
         }
         private async void Register_Account(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RegisterPage());
+        }
+
+        private void Accelerometer_ShakeDetected(object sender, EventArgs e)
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                Entry_Username.Text = string.Empty;
+                Entry_Password.Text = string.Empty;
+            });
         }
         async private void Reset_Password(object sender, EventArgs e)
         {

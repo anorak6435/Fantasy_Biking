@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Fantasy_Biking.Logic;
 using Fantasy_Biking.Model;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -27,7 +28,7 @@ namespace Fantasy_Biking
             this.Display_All_Bikers();
             this.Display_My_Reserve();
         }
-
+        
         private void Display_Team_Total_Cost()
         {
             // get sum of cost in my team

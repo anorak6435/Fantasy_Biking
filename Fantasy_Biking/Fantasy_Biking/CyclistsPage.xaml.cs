@@ -74,7 +74,13 @@ namespace Fantasy_Biking
             } else
             {
                 // there is an item selected
-                TeamLogic.AddBikerToTeam(Swap_Cyclists.SelectedItem as Biker);
+                (bool couldAdd, string ErrMsg) = TeamLogic.AddBikerToTeam(Swap_Cyclists.SelectedItem as Biker);
+
+                // tell the user if something went wrong with adding the biker on my team
+                if (!couldAdd)
+                {
+                    DisplayAlert("Warning", ErrMsg, "Okay");
+                }
 
                 // reload bikers on my team
                 List<Biker> MyTeam = TeamLogic.GetMyTeamBikers();
@@ -91,11 +97,20 @@ namespace Fantasy_Biking
             {
                 DisplayAlert("Canceling!", "please select a cyclist to add!", "cancel");
             }
-            // there is an item selected
-            TeamLogic.AddBikerToReserve(Swap_Cyclists.SelectedItem as Biker);
-            List<Biker> MyTeam = TeamLogic.GetMyReserve();
-            Reserve_Cyclists.ItemsSource = MyTeam;
+            else
+            {
+                // there is an item selected
+                (bool couldAdd, string ErrMsg) = TeamLogic.AddBikerToReserve(Swap_Cyclists.SelectedItem as Biker);
 
+                // tell the user if something went wrong with adding the biker on my team
+                if (!couldAdd)
+                {
+                    DisplayAlert("Warning", ErrMsg, "Okay");
+                }
+
+                List<Biker> MyTeam = TeamLogic.GetMyReserve();
+                Reserve_Cyclists.ItemsSource = MyTeam;
+            }
         }
 
         private void My_Cyclists_ItemSelected(object sender, SelectedItemChangedEventArgs e)

@@ -16,6 +16,9 @@ namespace Fantasy_Biking
         public LeaderboardPage()
         {
             InitializeComponent();
+        }
+        protected override void OnAppearing()
+        {
             Overall_Leader.ItemsSource = UserLogic.GetAllUsers();
             Today_Leader.ItemsSource = UserLogic.GetAllUsers();
         }

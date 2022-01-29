@@ -53,6 +53,59 @@ namespace Fantasy_Biking.Logic
                 Cost = 15,
             });
 
+            bikers.Add(new Biker
+            {
+                Id = 3,
+                Position = 4,
+                Name = "Papadelli Gordo",
+                CountryCode = "fr",
+                CountryFlag = "https://flagcdn.com/24x18/fr.png",
+                PointsPerRaceday = 10.0f,
+                Points = 14,
+                Racedays = 1,
+                Cost = 16,
+            });
+
+            bikers.Add(new Biker
+            {
+                Id = 4,
+                Position = 5,
+                Name = "Max verstappen",
+                CountryCode = "nl",
+                CountryFlag = "https://flagcdn.com/24x18/nl.png",
+                PointsPerRaceday = 10.0f,
+                Points = 50,
+                Racedays = 1000,
+                Cost = 25,
+            });
+
+            bikers.Add(new Biker
+            {
+                Id = 5,
+                Position = 6,
+                Name = "The stig",
+                CountryCode = "gb",
+                CountryFlag = "https://flagcdn.com/24x18/gb.png",
+                PointsPerRaceday = 10.0f,
+                Points = 3,
+                Racedays = 4,
+                Cost = 5,
+            });
+
+            bikers.Add(new Biker
+            {
+                Id = 6,
+                Position = 7,
+                Name = "Lance Armstrong",
+                CountryCode = "us",
+                CountryFlag = "https://flagcdn.com/24x18/us.png",
+                PointsPerRaceday = 10.0f,
+                Points = 28,
+                Racedays = 420,
+                Cost = 30,
+            });
+
+
             return bikers;
 
             //var client = new HttpClient();

@@ -23,92 +23,125 @@ namespace Fantasy_Biking.Logic
 
 
         // buying the biker
-        public static void AddBikerToTeam(Biker biker)
+        public static (bool, string) AddBikerToTeam(Biker biker)
         {
-            // insert the team into the table
-            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+            // check if the biker I want to add is not in the Reserves list
+            if (GetMyReserveBikers().FindAll(x => biker.Id == x.Id).Count == 0)
             {
-                con.CreateTable<Team>();
-                con.CreateTable<BikerInTeam>();
+                // the biker is not in the reserve list
 
-                // check if the user already has a team
-                List<Team> teams = con.Table<Team>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
-                if (teams.Count == 1)
-                {   // the user has a team
-                    // check if biker in bikerTeam table
-                    int teamID = teams[0].Id;
-                    List<BikerInTeam> bikeInTeam = con.Table<BikerInTeam>().Where(x => x.BikerId == biker.Id && x.TeamId == teamID).ToList();
-                    if (bikeInTeam.Count == 0)
-                    {   // biker is not already in this team
+                // insert the team into the table
+                using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+                {
+                    con.CreateTable<Team>();
+                    con.CreateTable<BikerInTeam>();
 
-                        // can we affort the biker
-                        if (teams[0].Budget >= biker.Cost)
+                    // check if the user already has a team
+                    List<Team> teams = con.Table<Team>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
+                    if (teams.Count == 1)
+                    {   // the user has a team
+                        // check if biker in bikerTeam table
+                        int teamID = teams[0].Id;
+                        List<BikerInTeam> bikeInTeam = con.Table<BikerInTeam>().Where(x => x.BikerId == biker.Id && x.TeamId == teamID).ToList();
+                        if (bikeInTeam.Count == 0)
+                        {   // biker is not already in this team
+
+                            // can we affort the biker
+                            if (teams[0].Budget >= biker.Cost)
+                            {
+                                // update the team balance
+                                teams[0].Budget -= biker.Cost;
+                                con.Update(teams[0]);
+
+                                // add biker to team
+                                con.Insert(new BikerInTeam { BikerId = biker.Id, TeamId = teams[0].Id });
+                            } else
+                            {
+                                return (false, "You cannot affort this biker");
+                            }
+
+                        } else
                         {
-                            // update the team balance
-                            teams[0].Budget -= biker.Cost;
-                            con.Update(teams[0]);
-
-                            // add biker to team
-                            con.Insert(new BikerInTeam { BikerId = biker.Id, TeamId = teams[0].Id });
+                            return (false, "The biker is already on your team");
                         }
-                        
                     }
-                }
-                else
-                {   // The user has no team
-                    Team newTeam = new Team
-                    {
-                        UserId = MainPage.loggedInUser.Id,
-                        Budget = Constants.TEAM_BUDGET - biker.Cost,
-                    };
-                    con.Insert(newTeam);
+                    else
+                    {   // The user has no team
+                        // so a team is created for the user
+                        Team newTeam = new Team
+                        {
+                            UserId = MainPage.loggedInUser.Id,
+                            Budget = Constants.TEAM_BUDGET - biker.Cost,
+                        };
+                        con.Insert(newTeam);
 
-                    con.Insert(new BikerInTeam { BikerId = biker.Id, TeamId = newTeam.Id });
+                        con.Insert(new BikerInTeam { BikerId = biker.Id, TeamId = newTeam.Id });
+                    }
+                    return (true, ""); // biker succesfully added, No message needed!
                 }
+            } else
+            {
+                return (false, "The Biker is used on your teams Reserve");
             }
         }
-        public static void AddBikerToReserve(Biker biker)
+        public static (bool, string) AddBikerToReserve(Biker biker)
         {
-            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
-            {
-                con.CreateTable<Reserve>();
-                con.CreateTable<ReserveInTeam>();
-
-                List<Reserve> reserve = con.Table<Reserve>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
-                if (reserve.Count == 1)
+            // check if the biker I want to add is not in my team list
+            if (GetMyTeamBikers().FindAll(x => biker.Id == x.Id).Count == 0) {
+                using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
                 {
-                    // check how many bikers I have
-                    if (GetMyReserveBikers().Count < 3)
-                    {
-                        // check if biker already in my reserves
-                        int teamID = reserve[0].Id;
-                        List<ReserveInTeam> reserves_team = con.Table<ReserveInTeam>().Where(x => x.BikerId == biker.Id && x.TeamId == teamID).ToList();
-                        if (reserves_team.Count == 0)
-                        {   // this biker is not in my reserves
-                            //can we affort the biker
-                            if (reserve[0].Budget >= biker.Cost)
-                            {
-                                // update reserve budget
-                                reserve[0].Budget -= biker.Cost;
-                                con.Update(reserve[0]);
+                    con.CreateTable<Reserve>();
+                    con.CreateTable<ReserveInTeam>();
 
-                                // add the reserve to the reserves
-                                con.Insert(new ReserveInTeam { BikerId = biker.Id, TeamId = reserve[0].Id });
+                    List<Reserve> reserve = con.Table<Reserve>().Where(t => t.UserId == MainPage.loggedInUser.Id).ToList();
+                    if (reserve.Count == 1)
+                    {
+                        // check how many bikers I have
+                        if (GetMyReserveBikers().Count < 3)
+                        {
+                            // check if biker already in my reserves
+                            int teamID = reserve[0].Id;
+                            List<ReserveInTeam> reserves_team = con.Table<ReserveInTeam>().Where(x => x.BikerId == biker.Id && x.TeamId == teamID).ToList();
+                            if (reserves_team.Count == 0)
+                            {   // this biker is not in my reserves
+                                //can we affort the biker
+                                if (reserve[0].Budget >= biker.Cost)
+                                {
+                                    // update reserve budget
+                                    reserve[0].Budget -= biker.Cost;
+                                    con.Update(reserve[0]);
+
+                                    // add the reserve to the reserves
+                                    con.Insert(new ReserveInTeam { BikerId = biker.Id, TeamId = reserve[0].Id });
+                                }
+                                else
+                                {
+                                    return (false, "You cannot affort this biker");
+                                }
+                            }
+                            else
+                            {
+                                return (false, "The biker is already on your teams reserves");
                             }
                         }
                     }
-                }
-                else
-                {   // The user has no team
-                    Reserve newreserve = new Reserve
-                    {
-                        UserId = MainPage.loggedInUser.Id,
-                        Budget = Constants.RESERVES_BUDGET
-                    };
-                    con.Insert(newreserve);
+                    else
+                    {   // The user has no team
+                        // so a team is created for the user
+                        Reserve newreserve = new Reserve
+                        {
+                            UserId = MainPage.loggedInUser.Id,
+                            Budget = Constants.RESERVES_BUDGET
+                        };
+                        con.Insert(newreserve);
 
-                    con.Insert(new ReserveInTeam { BikerId = biker.Id, TeamId = newreserve.Id });
+                        con.Insert(new ReserveInTeam { BikerId = biker.Id, TeamId = newreserve.Id });
+                    }
+                    return (true, ""); // biker succesfully added, No message needed!
                 }
+            } else
+            {
+                return (false, "The Biker is used on your team");
             }
         }
 
@@ -139,6 +172,10 @@ namespace Fantasy_Biking.Logic
             return myTeam;
         }
 
+        /// <summary>
+        /// Get all the logged in bikers from the logged in users team
+        /// </summary>
+        /// <returns></returns>
         public static List<Biker> GetMyTeamBikers()
         {
             List<Biker> myTeam = new List<Biker>();

@@ -15,7 +15,7 @@ namespace Fantasy_Biking.Logic
             // check the given strings are valid
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
-                return (null, "Vul zowel de gebruikersnaam als het wachtwoord in!");
+                return (null, "Enter both Username and password!");
             }
 
             List<User> usrs;
@@ -27,10 +27,10 @@ namespace Fantasy_Biking.Logic
             // check that there is one person that meets password and userName
             if (usrs.Count < 1)
             {
-                return (null, "Geen gebruiker gevonden!");
+                return (null, "No user found!");
             } else if (usrs.Count > 1)
             {
-                return (null, "Fout in de database!");
+                return (null, "Error in database!");
             }
             return (usrs[0], string.Empty);
         }
@@ -40,11 +40,11 @@ namespace Fantasy_Biking.Logic
             // check the incoming data is valid
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(passwordRepeat))
             {
-                return (false, "Vul gebruikersnaam en wachtwoord in!");
+                return (false, "Enter both Username and password!");
             }
             if (password != passwordRepeat)
             {
-                return (false, "Vul 2 maal het zelfde wachtwoord in!");
+                return (false, "Entered passwords are not the same!");
             }
             // create the user
             User usr = new User();
@@ -62,15 +62,15 @@ namespace Fantasy_Biking.Logic
                 List<User> users = con.Table<User>().Where(x => x.Name == userName).ToList();
                 if (users.Count > 0)
                 {
-                    return (false, "Gebruiker bestaat al!");
+                    return (false, "User already exists!");
                 }
                 ins_rows = con.Insert(usr);
             }
             if (ins_rows != 1)
             {
-                return (false, "Fout in de database connectie!");
+                return (false, "Error in database!");
             }
-            return (true, "Succesvol toegevoegd!");
+            return (true, "Succesfully added!");
         }
         public static List<User> GetAllUsers()
         {
